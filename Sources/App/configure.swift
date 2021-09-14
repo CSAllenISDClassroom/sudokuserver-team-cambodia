@@ -6,5 +6,17 @@ public func configure(_ app: Application) throws {
     // app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
 
     // register routes
+    guard let portString = Environment.get("VAPOR_LOCAL_PORT"),
+          let port = Int(portString) else {
+        fatalError("Failed to determine VAPOR LOCAL PORT from environment")
+    }
+    app.http.server.configuration.port = port
+
+    // Set local host
+    guard let hostname = Environment.get("VAPOR_LOCAL_HOST") else {
+        fatalError("Failed to determine VAPOR LOCAL HOST from environment")
+    }
+    app.http.server.configuration.hostname = hostname
+    
     try routes(app)
 }
