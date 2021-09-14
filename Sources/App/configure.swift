@@ -17,7 +17,10 @@ public func configure(_ app: Application) throws {
         fatalError("Failed to determine VAPOR LOCAL HOST from environment")
     }
     app.http.server.configuration.hostname = hostname
+<<<<<<< HEAD
 
+=======
+>>>>>>> e0072d63b931f64f159e8877ebd50af5d172319e
     // register routes
     try routes(app)
 }
