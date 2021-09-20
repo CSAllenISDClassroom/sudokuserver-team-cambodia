@@ -90,21 +90,14 @@ func removeNum(number : Int) {
     }
 }
 
-func placeNum(boxNum : Int, number : Int) -> Bool{
-    var indexesOfBox = getIndexesOfBox(boxNum : boxNum)
-    var placedNumOnBoard = false
+func placeNum(boxNum : Int, number : Int){
+    let indexesOfBox = getIndexesOfBox(boxNum : boxNum)
     for _ in 1 ... 100 {
-        var randomIndex = indexesOfBox[Int.random(in: 0 ..< indexesOfBox.count)]
+        let randomIndex = indexesOfBox[Int.random(in: 0 ..< indexesOfBox.count)]
         if board[randomIndex].number == 0 && checkRow(rowNum : board[randomIndex].row, number : number) && checkColumn(columnNum : board[randomIndex].column, number : number) && checkBox(boxNum: board[randomIndex].box, number : number) {
             board[randomIndex].number = number
-            placedNumOnBoard = true
-            return true
             break
-        }
-    }
-
-    if !placedNumOnBoard {
-        return false
+           }
     }
 }
 
