@@ -24,14 +24,16 @@ var board = [s(r: 1, c: 1, b: 1), s(r: 1, c: 2, b: 1), s(r: 1, c: 3, b: 1), s(r:
              s(r: 9, c: 1, b: 7), s(r: 9, c: 2, b: 7), s(r: 9, c: 3, b: 7), s(r: 9, c: 4, b: 8), s(r: 9, c: 5, b: 8), s(r: 9, c: 6, b: 8), s(r: 9, c: 7, b: 9), s(r: 9, c: 8, b: 9), s(r: 9, c: 9, b: 9)
 ]
 
-func printBoard() {
+func printBoard() -> String {
+    var finalBoard = ""
     for i in 0 ..< board.count {
         if i % 9 == 0 {
-            print()
+            finalBoard += "\n"
         }
-        print(board[i].number, terminator: " ")
+        finalBoard += String(board[i].number) + " "
     }
-    print()
+    finalBoard += "\n"
+    return finalBoard
 }
 
 
@@ -106,31 +108,31 @@ func placeNum(boxNum : Int, number : Int) -> Bool{
     }
 }
 
-var isComplete = false
-var numsZero = 0
+func generateBoard() -> String {
+    var isComplete = false
+    var numsZero = 0
 
-while !isComplete {
-    for box in 1 ... 9 {
-        for num in 1 ... 9 {
-            placeNum(boxNum : box, number : num)
+    while !isComplete {
+        for box in 1 ... 9 {
+            for num in 1 ... 9 {
+                placeNum(boxNum : box, number : num)
+            }
+        }
+
+        for square in board {
+            if square.number == 0 {
+                numsZero += 1
+            }
+        }
+
+        if numsZero == 0 {
+            isComplete = true
+        } else {
+            numsZero = 0
+            for num in 1 ... 9 {
+                removeNum(number: num)
+            }
         }
     }
-
-    for square in board {
-        if square.number == 0 {
-            numsZero += 1
-        }
-    }
-
-    if numsZero == 0 {
-        isComplete = true
-    } else {
-        numsZero = 0
-        for num in 1 ... 9 {
-            removeNum(number: num)
-        }
-    }
+    return printBoard()
 }
-
-
-printBoard()
