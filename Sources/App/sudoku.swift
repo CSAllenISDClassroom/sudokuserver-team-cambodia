@@ -129,3 +129,7 @@ func generateBoard() -> String {
     }
     return printBoard()
 }
+
+class Board{
+    let board = generateBoard()
+}
