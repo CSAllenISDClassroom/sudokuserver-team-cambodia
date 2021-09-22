@@ -16,12 +16,7 @@ struct ResponseData : Content{
 
 var sudokuIDs = [Int:Board]() //class of boardsData
 
-var latestBoardID = 0 //class and static variable
-
-func updateBoardID() -> Int{
-    latestBoardID += 1
-    return latestBoardID
-}
+let latestBoardID = boardID()
 
 func routes(_ app: Application) throws {
     app.get { req in
@@ -30,7 +25,7 @@ func routes(_ app: Application) throws {
 
     app.post("games") { req -> ResponseData in 
         let board = Board()
-        let id = updateBoardID()
+        let id = latestBoardID.updateBoardID()
 
         sudokuIDs[id] = board
         
