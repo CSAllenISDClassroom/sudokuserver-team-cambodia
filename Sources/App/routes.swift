@@ -20,10 +20,6 @@ struct SudokuBoard: Content {
 }
 
 func routes(_ app: Application) throws {
-<<<<<<< HEAD
-=======
-
->>>>>>> 45bae07b6798bca16a7c83813e26e88b45631a21
     app.get { req in
         return "It works!"
     }
