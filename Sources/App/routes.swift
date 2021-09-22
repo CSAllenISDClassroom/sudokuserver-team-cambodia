@@ -25,7 +25,7 @@ func updateBoardID() -> Int{
 
 func routes(_ app: Application) throws {
     app.get { req in
-        return "It works!"
+        return "vapor my beloved"
     }
 
     app.post("games") { req -> ResponseData in 
@@ -42,22 +42,19 @@ func routes(_ app: Application) throws {
         let cells = sudokuIDs[id] ?? "error"
         return ResponseData(action: "None", payload: "None", response: cells, statusCode: "200 OK")
     }
-    
-    
-    //???
-    app.post("hersh") { req -> Int in
-        updateBoardID()
-        return latestBoardID
+
+    app.put("games", ":id", "cells", ":boxIndex", ":cellIndex") { req -> ResponseData in
+        let boardArray = squareInfo().squaresInfo
+        let id = req.parameters.get("id") ?? -1
+        let boxIndex = req.parameters.get("boxIndex") ?? -1
+        let cellIndex = req.parameters.get("cellIndex") ?? -1
+
+        for i in boardArray {
+            if s.box = boxIndex && s.cellIndex == cellIndex {
+                s.number = -1 //what do we set the number to??
+            }
+        }
+        
+        return ResponseData(action: "Placed value in boxIndex, cellIndex", payload: "number??", response: "Nothing", statusCode: "204 No content") //number??
     }
-
-
-    app.get("hershlol") { req -> String in
-        return "\(latestBoardID)"
-    }
-
-//    app.get("games", ":id", "cells") { req -> SudokuBoard in
-//        let board = SudokuBoard(board: generateBoard())
-//        return board
-//    }
-    
 }
