@@ -22,7 +22,6 @@ func updateBoardID() -> Int{
     return latestBoardID
 }
 
-
 func routes(_ app: Application) throws {
     app.get { req in
         return "vapor my beloved"
