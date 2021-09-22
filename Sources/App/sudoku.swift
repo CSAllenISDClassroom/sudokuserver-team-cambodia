@@ -133,9 +133,6 @@ func generateBoard() -> String {
 }
 
 class Board{
-    let board = generateBoard()
-}
-
-class squareInfo {
+    let finalBoard = generateBoard()
     let squaresInfo = board
 }
