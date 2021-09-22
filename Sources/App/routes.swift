@@ -12,7 +12,6 @@ struct SudokuBoard: Content {
 }
 
 func routes(_ app: Application) throws {
-    var board : String
     app.get { req in
         return "It works!"
     }
