@@ -13,9 +13,10 @@ struct ResponseData : Content{
     var statusCode : String
 
 }
-var sudokuIDs = [Int:Board]()
 
-var latestBoardID = 0
+var sudokuIDs = [Int:Board]() //class of boardsData
+
+var latestBoardID = 0 //class and static variable
 
 func updateBoardID() -> Int{
     latestBoardID += 1
@@ -48,9 +49,9 @@ func routes(_ app: Application) throws {
         let boxIndex = req.parameters.get("boxIndex") ?? -1
         let cellIndex = req.parameters.get("cellIndex") ?? -1
 
-        for s in boardArray {
-            if s.box == boxIndex && s.cellIndex == cellIndex {
-                s.number = -1 //what do we set the number to??
+        for square in boardArray {
+            if square.box == boxIndex && square.cellIndex == cellIndex {
+                square.number = -1 //what do we set the number to??
             }
         }
         
