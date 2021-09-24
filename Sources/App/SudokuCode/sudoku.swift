@@ -30,7 +30,11 @@ class sudokuBoard {
             }
             return isValueInColumn 
         }
-        func isValueInBox(
+        func isValueInBox(columnIndexOfBox:Int,rowIndexOfBox:Int, value: Int) -> Bool {
+            var isValueInBox = false
+            
+
+        }
 
 
         
