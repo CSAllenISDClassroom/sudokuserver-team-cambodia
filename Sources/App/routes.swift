@@ -48,7 +48,7 @@ func routes(_ app: Application) throws {
         //This return statement is of the type ResponseData and communicates to the client of the new game, boardID, and the server's statusCode
         return ResponseData(action: "Created Game", payload: "None", response: "\(id)", statusCode: "201 Created")  
     }
-
+    
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //The GET command below allows the client to view the completed board of their specific game
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
