@@ -20,6 +20,18 @@ class sudokuBoard {
             availableNumbers.remove(at: randomIndex)
 
         }
+        
+        func isValueInColumn(columnNumber:Int, value:Int)-> Bool {
+            var isValueInColumn = false 
+            for row in sudokuBoard {
+                if row[columnNumber] == value  {
+                    isValueInColumn == true
+                } 
+            }
+            return isValueInColumn 
+        }
+        func isValueInBox(
+
 
         
     }
