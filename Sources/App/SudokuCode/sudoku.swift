@@ -1,18 +1,33 @@
 class sudokuBoard {
 
     public func generateNewBoard() {
+        var cells = [Cell]()
         for i in 0...8 {
-            var potentialNumber = 0
+            var potentialValue = 0
+            let numberConflicts = false
             var availableNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            potentialNumber = Int.random(in: 0..<availableNumbers)
+
+            potentialValue = availableNumbers[Int.random(in: 0..<availableNumbers.count)]
+
+            if !numberConflicts {
+                let cell = Cell(valueInCell:potentialValue, xCoordinate: (i+1), yCoordinate: 1)
+                cells.append(cell)
+                
+                if let index = availableNumbers.firstIndex(of: potentialValue) {
+                    availableNumbers.remove(at:index)
+                }
+
+                print("Number Removed: \(potentialValue)")
+            }
+            
         }
     }
 
-    public func retrieveRow() -> Row {}
+//    public func retrieveRow() -> Row {}
 
-    public func retrieveColumn() -> Column {}
+//    public func retrieveColumn() -> Column {}
 
-    public func retrieveBox() -> Box {}
+//    public func retrieveBox() -> Box {}
 }
 
 /*
