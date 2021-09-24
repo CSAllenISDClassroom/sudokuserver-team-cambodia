@@ -1,3 +1,21 @@
+class sudokuBoard {
+
+    public func generateNewBoard() {
+        for i in 0...8 {
+            var potentialNumber = 0
+            var availableNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            potentialNumber = Int.random(in: 0..<availableNumbers)
+        }
+    }
+
+    public func retrieveRow() -> Row {}
+
+    public func retrieveColumn() -> Column {}
+
+    public func retrieveBox() -> Box {}
+}
+
+/*
 class s{
     public var row : Int
     public var column : Int
@@ -136,3 +154,5 @@ class Board{
     let finalBoard = generateBoard()
     let squaresInfo = board
 }
+
+ */
