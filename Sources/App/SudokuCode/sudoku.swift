@@ -1,33 +1,28 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//The class below creates a new board by randomly choosing values from 1...9 in order to create a solvable sudoku board
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class sudokuBoard {
 
+    //When this function is invoked, a new game will be generated 
     public func generateNewBoard() {
-        var cells = [Cell]()
+
+        //This loop will randomly select a number from 1...9 as the potentialNumber to place from an array of availableNumbers
         for i in 0...8 {
             var potentialValue = 0
             let numberConflicts = false
             var availableNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-            potentialValue = availableNumbers[Int.random(in: 0..<availableNumbers.count)]
-
-            if !numberConflicts {
-                let cell = Cell(valueInCell:potentialValue, xCoordinate: (i+1), yCoordinate: 1)
-                cells.append(cell)
-                
-                if let index = availableNumbers.firstIndex(of: potentialValue) {
-                    availableNumbers.remove(at:index)
-                }
-
-                print("Number Removed: \(potentialValue)")
-            }
-            
+            potentialNumber = Int.random(in: 0 ..< availableNumbers)
         }
     }
 
-//    public func retrieveRow() -> Row {}
-
-//    public func retrieveColumn() -> Column {}
-
-//    public func retrieveBox() -> Box {}
+    //This function allows the values within a row to be retrieved
+    public func retrieveRow() -> Row {}
+ 
+    //This function allows the values within a column to be retrieved   
+    public func retrieveColumn() -> Column {}
+ 
+    //This function allows the values within a box to be retrieved   
+    public func retrieveBox() -> Box {}
 }
 
 /*
