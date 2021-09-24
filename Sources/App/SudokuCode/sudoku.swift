@@ -8,10 +8,12 @@ class sudokuBoard {
 
         //This loop will randomly select a number from 1...9 as the potentialNumber to place from an array of availableNumbers
         for i in 0...8 {
+            var randomIndex = 0
             var potentialValue = 0
             let numberConflicts = false
             var availableNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            potentialNumber = Int.random(in: 0 ..< availableNumbers)
+            randomIndex = Int.random(in: 0 ..< availableNumbers.count - 1)
+            potentialValue = availableNumbers[randomIndex]
         }
     }
 
