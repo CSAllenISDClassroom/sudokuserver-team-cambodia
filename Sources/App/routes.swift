@@ -50,20 +50,20 @@ func routes(_ app: Application) throws {
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //
+    //The GET command below allows the client to view the completed board of their specific game
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     app.get("games", ":id", "cells") { req -> ResponseData in
 
-        //
+        //The variable id accesses the specific id for the client's requested board solution, which is represented by the variable, cells
         let id = req.parameters.get("id") ?? -1
         let cells = sudokuIDs[id] ?? Board()
 
-        //
+        //This return statement responds to the client with the completed board with the server's statusCode as "200 OK"
         return ResponseData(action: "None", payload: "None", response: cells.finalBoard, statusCode: "200 OK")
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //
+    //The PUT command below allows the client to place a specific value at a specified cell on their board
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     app.put("games", ":id", "cells", ":boxIndex", ":cellIndex") { req -> ResponseData in
 
