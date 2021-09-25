@@ -30,14 +30,27 @@ class sudokuBoard {
             }
             return isValueInColumn 
         }
-        func isValueInBox(columnIndexOfBox:Int,rowIndexOfBox:Int, value: Int) -> Bool {
-            var isValueInBox = false
-            
+        func isValueInBox(topLeftColumnIndexOfBox:Int,firstRowIndexOfBox:Int,value:Int) -> Bool {
+            var boxValues :[Int] = []
+            var boxRows : [[Int]] = []
+            var isValueInBox = false 
+           
+            boxRows.append(sudokuBoard[firstRowIndexOfBox],sudokuBoard[firstRowIndexOfBox+1],sudokuBoard[firstRowIndexOfBox+2])
 
-        }
+            for row in boxRows {
+                boxValues.append(row[topLeftColumnIndexOfBox],row[topLeftColumnIndexOfBox+1],row[topLeftColumnIndexOfBox+2])
+                
+            }
 
-
-        
+            for boxValue in boxValues {
+                if boxValue == value{
+                    isValueInBox = true
+                }
+            }
+            return isValueInBox 
+                
+           
+    }
     }
 }
 
