@@ -21,6 +21,20 @@ class sudokuBoard {
         }
         
     }
+        func printBoard() -> String {
+        var finalBoard = ""
+        for i in 0 ..< board.count {
+            for j in 0 ..< box.count {
+                if i % 9 == 0 {
+                    finalBoard += "\n"
+                }
+                finalBoard += String(board[i][j]) + " "
+            }
+        }
+        finalBoard += "\n"
+        return finalBoard
+    }
+
     
 }
 
