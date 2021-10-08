@@ -1,25 +1,28 @@
 import Foundation
+import Vapor 
 
 let board = Board()
 let encoder = JSONEncoder()
-
+// This function turns teh JSON code into a readable string 
+func readableJSONData() -> String  { 
 guard let data = try? encoder.encode(board),
       let json = String(data: data, encoding: .utf8) else {
     fatalError("Failed to encode data into json.")
 }
-print(json)
+return (json)
+} 
 
 // Structure definitions
-struct Position: Codable {
+struct Position: Content {
     let boxIndex: Int
     let cellIndex: Int
 }
 
-struct Cell: Codable {
+struct Cell: Content {
     let position: Position
     let value: Int?
 }
-struct Box: Codable {
+struct Box: Content {
     let cells: [Cell]
 
     init(boxIndex: Int) {
@@ -29,9 +32,10 @@ struct Box: Codable {
         }
         self.cells = cells
     }
+    
 }
 
-struct Board: Codable {
+struct Board: Content {
     let board: [Box]
 
     init() {
