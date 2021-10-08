@@ -42,7 +42,7 @@ func routes(_ app: Application) throws {
         //The variable board is of the type Board, which creates a new game, while id is the type boardID and is the new board ID for the new game
         let board = Board()
         let id = latestBoardID.updateBoardID()
-
+        
         sudokuIDs[id] = board
 
         //This return statement is of the type ResponseData and communicates to the client of the new game, boardID, and the server's statusCode
