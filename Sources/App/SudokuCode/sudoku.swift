@@ -14,6 +14,7 @@ class s{
         self.cellIndex = i
     }
 }
+
 var board = [[s(b: 1, i: 1), s(b: 1, i: 2), s(b: 1, i: 3), s(b: 1, i: 4), s(b: 1, i: 5), s(b: 1, i: 6), s(b: 1, i: 7), s(b: 1, i: 8), s(b: 1, i: 9)],
              [s(b: 2, i: 1), s(b: 2, i: 2), s(b: 2, i: 3), s(b: 2, i: 4), s(b: 2, i: 5), s(b: 2, i: 6), s(b: 2, i: 7), s(b: 2, i: 8), s(b: 2, i: 9)],
              [s(b: 3, i: 1), s(b: 3, i: 2), s(b: 3, i: 3), s(b: 3, i: 4), s(b: 3, i: 5), s(b: 3, i: 6), s(b: 3, i: 7), s(b: 3, i: 8), s(b: 3, i: 9)],
@@ -44,11 +45,13 @@ func printBoard() -> String {
 
 
 
-func checkRow(rowNum: Int, number: Int) -> Bool{
-
-    for square in board {
-        if square.row == rowNum && square.number == number{
-            return false
+func checkRow(boxIndex: Int, cellIndex: Int) -> Bool{
+    
+    for box in board {
+        for cell in box {
+            if cell.box == boxIndex && cell.cellIndex == cellIndex{
+                return false
+            }
         }
     }
 
@@ -136,7 +139,7 @@ func generateBoard() -> String {
     return printBoard()
 }
 
-class Board{
+class GeneratedBoard {
     let finalBoard = generateBoard()
     let squaresInfo = board
 }
