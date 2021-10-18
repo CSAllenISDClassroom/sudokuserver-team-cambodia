@@ -38,17 +38,18 @@ func routes(_ app: Application) throws {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //The POST command below creates a new game and also creates a board ID associated with the specific game created.
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    app.post("games") { req in 
+    app.post("games") { req -> Response in 
 
         //The variable board is of the type Board, which creates a new game, while id is the type boardID and is the new board ID for the new game
         let board = Board()
         let id = latestBoardID.updateBoardID()
         
-        sudokuIDs[id] = board
+        let response = Response(body:sudokuIDs[id])
 
         //This return statement is of the type ResponseData and communicates to the client of the new game, boardID, and the server's statusCode
-        return {"id" : id} 
+        return response 
     }
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
