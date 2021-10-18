@@ -1,7 +1,7 @@
 import Foundation
 import Vapor 
 
-let JSONboard: [[s]] = GeneratedBoard() 
+let JSONboard: GeneratedBoard = GeneratedBoard() 
  
 let encoder = JSONEncoder()
 
