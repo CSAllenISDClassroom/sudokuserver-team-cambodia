@@ -24,7 +24,7 @@ struct ID : Content {
     var id : Int
 }
 var sudokuIDs = [Int:Board]() //class of boardsData
-
+let encoder = JSONEncoder() 
 let latestBoardID = boardID()
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -46,7 +46,7 @@ func routes(_ app: Application) throws {
         let board = Board()
         let id = latestBoardID.updateBoardID()
         
-        let response = Response(body:sudokuIDs[id])
+        let response = Response(body:(sudokuIDs[id])) 
 
         //This return statement is of the type ResponseData and communicates to the client of the new game, boardID, and the server's statusCode
         return response 
