@@ -14,3 +14,8 @@ func readableJSONData() -> String  {
     return (json)
 }
 
+<<<<<<< HEAD
+}
+ 
+=======
+>>>>>>> c414944c23cf539e6203d205c6f4c6b1e96cd179
