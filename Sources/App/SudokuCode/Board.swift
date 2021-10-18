@@ -1,6 +1,8 @@
 import Vapor
+import Foundation
 
-struct Board2: Content {
+
+struct Board: Content {
     let board: [Box]
 
     init() {
