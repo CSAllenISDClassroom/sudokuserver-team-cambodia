@@ -6,7 +6,7 @@ import Vapor
 
 
 
-class s{
+class s : Encodable {
     public var box : Int
     public var cellIndex: Int
     public var number = 0
@@ -146,7 +146,7 @@ func generateBoard() -> String {
     return printBoard()
 }
 
-class GeneratedBoard {
+class GeneratedBoard : Encodable{
     let finalBoard = generateBoard()
     let squaresInfo = board
 }
