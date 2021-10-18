@@ -14,3 +14,4 @@ guard let data = try? encoder.encode(board),
 return (json)
 
 }
+ 
