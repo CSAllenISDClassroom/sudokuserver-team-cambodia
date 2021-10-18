@@ -1,4 +1,6 @@
 import Vapor
+import Foundation
+
 
 struct Board: Content {
     let board: [Box]

@@ -10,6 +10,5 @@ struct Box: Content {
             cells.append(Cell(position: Position(boxIndex: boxIndex, cellIndex: cellIndex), value: cellIndex))
         }
         self.cells = cells
-    }
-    
+    }    
 }

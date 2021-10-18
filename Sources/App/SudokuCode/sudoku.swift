@@ -1,6 +1,8 @@
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //The class below creates a new board by randomly choosing values from 1...9 in order to create a solvable sudoku board
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import Vapor
 
 
 
@@ -14,7 +16,7 @@ class s{
         self.cellIndex = i
     }
 }
-var board = [[s(b: 1, i: 1), s(b: 1, i: 2), s(b: 1, i: 3), s(b: 1, i: 4), s(b: 1, i: 5), s(b: 1, i: 6), s(b: 1, i: 7), s(b: 1, i: 8), s(b: 1, i: 9)],
+var  board =  [[s(b: 1, i: 1), s(b: 1, i: 2), s(b: 1, i: 3), s(b: 1, i: 4), s(b: 1, i: 5), s(b: 1, i: 6), s(b: 1, i: 7), s(b: 1, i: 8), s(b: 1, i: 9)],
              [s(b: 2, i: 1), s(b: 2, i: 2), s(b: 2, i: 3), s(b: 2, i: 4), s(b: 2, i: 5), s(b: 2, i: 6), s(b: 2, i: 7), s(b: 2, i: 8), s(b: 2, i: 9)],
              [s(b: 3, i: 1), s(b: 3, i: 2), s(b: 3, i: 3), s(b: 3, i: 4), s(b: 3, i: 5), s(b: 3, i: 6), s(b: 3, i: 7), s(b: 3, i: 8), s(b: 3, i: 9)],
 
@@ -44,32 +46,41 @@ func printBoard() -> String {
 
 
 
-func checkRow(rowNum: Int, number: Int) -> Bool{
-
-    for square in board {
-        if square.row == rowNum && square.number == number{
+func checkRow(boxIndex: Int, cellIndex: Int) -> Bool{
+    let currentBoxIndex = boxIndex % 3
+    let currentCellIndex = cellIndex % 3
+    for _ in board {
+        
+        
+        if board[currentBoxIndex][currentCellIndex].number == board[currentBoxIndex][currentCellIndex].number + 1 && board[currentBoxIndex][currentCellIndex].number == board[currentBoxIndex][currentCellIndex].number - 1 {
             return false
         }
+        
     }
 
     return true
 }
 
-func checkColumn(columnNum: Int, number: Int) -> Bool{
+func checkColumn(boxIndex: Int, cellIndex: Int) -> Bool{
 
-    for square in board {
-        if square.column == columnNum && square.number == number{
+    for _ in board {
+        let currentBoxIndex = boxIndex % 3
+        let currentCellIndex = cellIndex % 3
+        if board[currentBoxIndex][currentCellIndex].number == board[currentBoxIndex][currentCellIndex].number + 3 && board[currentBoxIndex][currentCellIndex].number == board[currentBoxIndex][currentCellIndex].number - 3 {
             return false
         }
     }
-
+    
     return true
 }
 
-func checkBox(boxNum: Int, number: Int) -> Bool {
-    for square in board {
-        if square.box == boxNum && square.number == number{
-            return false
+func checkBox(boxIndex: Int, cellIndex: Int) -> Bool {
+
+    for box in board {
+        for cell in box {
+            if cell.box == boxIndex && cell.cellIndex == cellIndex {
+                return false
+            }
         }
     }
 
@@ -136,7 +147,7 @@ func generateBoard() -> String {
     return printBoard()
 }
 
-class Board{
+class GeneratedBoard {
     let finalBoard = generateBoard()
     let squaresInfo = board
 }
