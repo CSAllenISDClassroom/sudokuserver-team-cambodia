@@ -15,17 +15,17 @@ class s{
     }
 }
 
-var board = [[s(b: 1, i: 1), s(b: 1, i: 2), s(b: 1, i: 3), s(b: 1, i: 4), s(b: 1, i: 5), s(b: 1, i: 6), s(b: 1, i: 7), s(b: 1, i: 8), s(b: 1, i: 9)],
-             [s(b: 2, i: 1), s(b: 2, i: 2), s(b: 2, i: 3), s(b: 2, i: 4), s(b: 2, i: 5), s(b: 2, i: 6), s(b: 2, i: 7), s(b: 2, i: 8), s(b: 2, i: 9)],
-             [s(b: 3, i: 1), s(b: 3, i: 2), s(b: 3, i: 3), s(b: 3, i: 4), s(b: 3, i: 5), s(b: 3, i: 6), s(b: 3, i: 7), s(b: 3, i: 8), s(b: 3, i: 9)],
+var board = [[s(b: 0, i: 0), s(b: 0, i: 1), s(b: 0, i: 2), s(b: 0, i: 3), s(b: 0, i: 4), s(b: 0, i: 5), s(b: 0, i: 6), s(b: 0, i: 7), s(b: 0, i: 8)],
+             [s(b: 1, i: 0), s(b: 1, i: 1), s(b: 1, i: 2), s(b: 1, i: 3), s(b: 1, i: 4), s(b: 1, i: 5), s(b: 1, i: 6), s(b: 1, i: 7), s(b: 1, i: 8)],
+             [s(b: 2, i: 0), s(b: 2, i: 1), s(b: 2, i: 2), s(b: 2, i: 3), s(b: 2, i: 4), s(b: 2, i: 5), s(b: 2, i: 6), s(b: 2, i: 7), s(b: 2, i: 8)],
 
-             [s(b: 4, i: 1), s(b: 4, i: 2), s(b: 4, i: 3), s(b: 4, i: 4), s(b: 4, i: 5), s(b: 4, i: 6), s(b: 4, i: 7), s(b: 4, i: 8), s(b: 4, i: 9)],
-             [s(b: 5, i: 1), s(b: 5, i: 2), s(b: 5, i: 3), s(b: 5, i: 4), s(b: 5, i: 5), s(b: 5, i: 6), s(b: 5, i: 7), s(b: 5, i: 8), s(b: 5, i: 9)],
-             [s(b: 6, i: 1), s(b: 6, i: 2), s(b: 6, i: 3), s(b: 6, i: 4), s(b: 6, i: 5), s(b: 6, i: 6), s(b: 6, i: 7), s(b: 6, i: 8), s(b: 6, i: 9)],
+             [s(b: 3, i: 0), s(b: 3, i: 1), s(b: 3, i: 2), s(b: 3, i: 3), s(b: 3, i: 4), s(b: 3, i: 5), s(b: 3, i: 6), s(b: 3, i: 7), s(b: 3, i: 8)],
+             [s(b: 4, i: 0), s(b: 4, i: 1), s(b: 4, i: 2), s(b: 4, i: 3), s(b: 4, i: 4), s(b: 4, i: 5), s(b: 4, i: 6), s(b: 4, i: 7), s(b: 4, i: 8)],
+             [s(b: 5, i: 0), s(b: 5, i: 1), s(b: 5, i: 2), s(b: 5, i: 3), s(b: 5, i: 4), s(b: 5, i: 5), s(b: 5, i: 6), s(b: 5, i: 7), s(b: 5, i: 8)],
 
-             [s(b: 7, i: 1), s(b: 7, i: 2), s(b: 7, i: 3), s(b: 7, i: 4), s(b: 7, i: 5), s(b: 7, i: 6), s(b: 7, i: 7), s(b: 7, i: 8), s(b: 7, i: 9)],
-             [s(b: 8, i: 1), s(b: 8, i: 2), s(b: 8, i: 3), s(b: 8, i: 4), s(b: 8, i: 5), s(b: 8, i: 6), s(b: 8, i: 7), s(b: 8, i: 8), s(b: 8, i: 9)],
-             [s(b: 9, i: 1), s(b: 9, i: 2), s(b: 9, i: 3), s(b: 9, i: 4), s(b: 9, i: 5), s(b: 9, i: 6), s(b: 9, i: 7), s(b: 9, i: 8), s(b: 9, i: 9)]]
+             [s(b: 6, i: 0), s(b: 6, i: 1), s(b: 6, i: 2), s(b: 6, i: 3), s(b: 6, i: 4), s(b: 6, i: 5), s(b: 6, i: 6), s(b: 6, i: 7), s(b: 6, i: 8)],
+             [s(b: 7, i: 0), s(b: 7, i: 1), s(b: 7, i: 2), s(b: 7, i: 3), s(b: 7, i: 4), s(b: 7, i: 5), s(b: 7, i: 6), s(b: 7, i: 7), s(b: 7, i: 8)],
+             [s(b: 8, i: 0), s(b: 8, i: 1), s(b: 8, i: 2), s(b: 8, i: 3), s(b: 8, i: 4), s(b: 8, i: 5), s(b: 8, i: 6), s(b: 8, i: 7), s(b: 8, i: 8)]]
 
 
 func printBoard() -> String {
@@ -48,9 +48,7 @@ func printBoard() -> String {
 func checkRow(boxIndex: Int, cellIndex: Int) -> Bool{
     let currentBoxIndex = boxIndex % 3
     let currentCellIndex = cellIndex % 3
-    for _ in board {
-        
-        
+    for _ in board {        
         if board[currentBoxIndex][currentCellIndex].number == board[currentBoxIndex][currentCellIndex].number + 1 && board[currentBoxIndex][currentCellIndex].number == board[currentBoxIndex][currentCellIndex].number - 1 {
             return false
         }
