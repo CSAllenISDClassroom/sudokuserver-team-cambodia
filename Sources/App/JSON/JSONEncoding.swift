@@ -1,8 +1,10 @@
 import Foundation
 import Vapor 
 
-let board = Board()
+let board: [[s]] = GeneratedBoard() 
+ 
 let encoder = JSONEncoder()
+
 // This function turns teh JSON code into a readable string 
 func readableJSONData() -> String  { 
 guard let data = try? encoder.encode(board),
@@ -10,6 +12,5 @@ guard let data = try? encoder.encode(board),
     fatalError("Failed to encode data into json.")
 }
 return (json)
-} 
 
-// Structure definitions
+}
