@@ -16,13 +16,6 @@ class s : Encodable {
         self.cellIndex = i
     }
 }
-<<<<<<< HEAD
-
-var board =  [[s(b: 1, i: 1), s(b: 1, i: 2), s(b: 1, i: 3), s(b: 1, i: 4), s(b: 1, i: 5), s(b: 1, i: 6), s(b: 1, i: 7), s(b: 1, i: 8), s(b: 1, i: 9)],
-             [s(b: 2, i: 1), s(b: 2, i: 2), s(b: 2, i: 3), s(b: 2, i: 4), s(b: 2, i: 5), s(b: 2, i: 6), s(b: 2, i: 7), s(b: 2, i: 8), s(b: 2, i: 9)],
-             [s(b: 3, i: 1), s(b: 3, i: 2), s(b: 3, i: 3), s(b: 3, i: 4), s(b: 3, i: 5), s(b: 3, i: 6), s(b: 3, i: 7), s(b: 3, i: 8), s(b: 3, i: 9)],
-=======
->>>>>>> 459ef8adf0dd98deb8931e05c9b14df497c504d7
 
 var board = [[s(b: 0, i: 0), s(b: 0, i: 1), s(b: 0, i: 2), s(b: 0, i: 3), s(b: 0, i: 4), s(b: 0, i: 5), s(b: 0, i: 6), s(b: 0, i: 7), s(b: 0, i: 8)],
              [s(b: 1, i: 0), s(b: 1, i: 1), s(b: 1, i: 2), s(b: 1, i: 3), s(b: 1, i: 4), s(b: 1, i: 5), s(b: 1, i: 6), s(b: 1, i: 7), s(b: 1, i: 8)],
