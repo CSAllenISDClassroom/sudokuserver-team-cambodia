@@ -46,33 +46,40 @@ func printBoard() -> String {
 
 
 func checkRow(boxIndex: Int, cellIndex: Int) -> Bool{
+    let currentBoxIndex = boxIndex % 3
+    let currentCellIndex = cellIndex % 3
+    for _ in board {
+        
+        
+        if board[currentBoxIndex][currentCellIndex].number == board[currentBoxIndex][currentCellIndex].number + 1 && board[currentBoxIndex][currentCellIndex].number == board[currentBoxIndex][currentCellIndex].number - 1 {
+            return false
+        }
+        
+    }
+
+    return true
+}
+
+func checkColumn(boxIndex: Int, cellIndex: Int) -> Bool{
+
+    for _ in board {
+        let currentBoxIndex = boxIndex % 3
+        let currentCellIndex = cellIndex % 3
+        if board[currentBoxIndex][currentCellIndex].number == board[currentBoxIndex][currentCellIndex].number + 3 && board[currentBoxIndex][currentCellIndex].number == board[currentBoxIndex][currentCellIndex].number - 3 {
+            return false
+        }
+    }
     
+    return true
+}
+
+func checkBox(boxIndex: Int, cellIndex: Int) -> Bool {
+
     for box in board {
         for cell in box {
-            if cell.box == boxIndex && cell.cellIndex == cellIndex{
+            if cell.box == boxIndex && cell.cellIndex == cellIndex {
                 return false
             }
-        }
-    }
-
-    return true
-}
-
-func checkColumn(columnNum: Int, number: Int) -> Bool{
-
-    for square in board {
-        if square.column == columnNum && square.number == number{
-            return false
-        }
-    }
-
-    return true
-}
-
-func checkBox(boxNum: Int, number: Int) -> Bool {
-    for square in board {
-        if square.box == boxNum && square.number == number{
-            return false
         }
     }
 
