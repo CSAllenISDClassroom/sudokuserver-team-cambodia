@@ -99,10 +99,12 @@ func getIndexesOfBox(boxNum: Int) -> [Int] {
 }
 
 func removeNum(number : Int) {
+    for j in 0 ..< board.count {
     for i in 0 ..< board.count {
-        if board[i].number == number {
-            board[i].number = 0
+        if board[i][j].number == number {
+            board[i][j].number = 0
         }
+    }
     }
 }
 
