@@ -8,7 +8,15 @@ struct ID : Content {
     var id : Int
 }
 
+class Game {
+    var board : Board
+    var shadowBoard : Board //change this later
 
+    init() {
+        board = Board()
+        shadowBoard = Board() //change this later
+    }
+}
 //This functions details the GET, PUT, and POST commands for the client to use to send requests to the server via an API
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 func routes(_ app: Application) throws {
@@ -29,7 +37,7 @@ func routes(_ app: Application) throws {
         let encoder = JSONEncoder()
 
         let difficulty: String? = req.query["difficulty"]
-        let board = Board()
+        let game = Game()
         let id = latestBoardID.updateBoardID() //check if this works
         
         sudokuIDs[id] = board
