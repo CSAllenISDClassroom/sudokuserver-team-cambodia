@@ -59,7 +59,8 @@ func routes(_ app: Application) throws {
         let id = req.parameters.get("id") ?? -1
         let cells = sudokuIDs[id] ?? Board()
 
-        //This return statement responds to the client with the completed board with the server's statusCode as "200 OK"
+
+       //This return statement responds to the client with the completed board with the server's statusCode as "200 OK"
         return ResponseData(action: "None", payload: "None", response: cells.finalBoard, statusCode: "200 OK")
     }
 
