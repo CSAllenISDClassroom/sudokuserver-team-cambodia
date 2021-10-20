@@ -106,31 +106,50 @@ func placeNum(boxNum : Int, number : Int) -> Bool{
     }
 }
 
-var isComplete = false
-var numsZero = 0
-
-while !isComplete {
-    for box in 1 ... 9 {
-        for num in 1 ... 9 {
-            placeNum(boxNum : box, number : num)
-        }
-    }
-
-    for square in board {
-        if square.number == 0 {
-            numsZero += 1
-        }
-    }
-
-    if numsZero == 0 {
-        isComplete = true
-    } else {
-        numsZero = 0
-        for num in 1 ... 9 {
-            removeNum(number: num)
-        }
-    }
+func createBoxes() {
+    
 }
 
+func generateBoard() -> [[Int]] {
 
-printBoard()
+
+    var isComplete = false
+    var numsZero = 0
+
+    while !isComplete {
+        for box in 1 ... 9 {
+            for num in 1 ... 9 {
+                placeNum(boxNum : box, number : num)
+            }
+        }
+
+        for square in board {
+            if square.number == 0 {
+                numsZero += 1
+            }
+        }
+
+        if numsZero == 0 {
+            isComplete = true
+        } else {
+            numsZero = 0
+            for num in 1 ... 9 {
+                removeNum(number: num)
+            }
+        }
+    }
+
+    //turn it into a 2d array
+    var twoDBoard = [[Int]]()
+    for s in 0 ..< board.count {
+        for box in 0 ..< 9 {
+            let emptyArray = [Int]()
+            twoDBoard.append(emptyArray)
+            if s/9 == box {
+                twoDBoard[box].append(board[s].number)
+            }
+        }
+    }
+    return twoDBoard 
+}
+
