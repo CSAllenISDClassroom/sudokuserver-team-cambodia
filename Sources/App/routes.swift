@@ -8,7 +8,7 @@ class Game {
     var board : Board
     var shadowBoard : Board //change this later
 
-    init() {
+    init(difficulty: String) {
         board = Board()
         shadowBoard = Board() //change this later
     }
@@ -29,8 +29,9 @@ func routes(_ app: Application) throws {
 
         let encoder = JSONEncoder()
 
-        let difficulty: String? = req.query["difficulty"]
-        let game = Game()
+        guard let difficulty: String? = req.query["difficulty"]
+        
+        let game = Game(difficulty: difficulty)
         let id = latestBoardID.updateBoardID() //check if this works
         
         sudokuIDs[id] = game
