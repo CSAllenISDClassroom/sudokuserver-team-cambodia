@@ -23,6 +23,7 @@ struct ResponseData : Content{
 struct ID : Content {
     var id : Int
 }
+
 var sudokuIDs = [Int:Board]() //class of boardsData
 let latestBoardID = boardID()
 
@@ -38,16 +39,16 @@ func routes(_ app: Application) throws {
     //The POST command below creates a new game and also creates a board ID associated with the specific game created.
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    app.post("games") { req -> Response in 
+    app.post("games") { req -> [String: Int] in 
 
         //The variable board is of the type Board, which creates a new game, while id is the type boardID and is the new board ID for the new game
         let board = Board()
         let id = latestBoardID.updateBoardID()
         
-        let response = Response(body:(sudokuIDs[id])) 
+        sudokuIDs[id] = board
 
         //This return statement is of the type ResponseData and communicates to the client of the new game, boardID, and the server's statusCode
-        return response 
+        return ["id": id] 
     }
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
