@@ -1,9 +1,5 @@
 import Vapor
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//The struct SudokuBoard includes the representation of the board as a string and the boardID as an Integer as well
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 struct ID : Content {
     var id : Int
 }
@@ -17,10 +13,10 @@ class Game {
         shadowBoard = Board() //change this later
     }
 }
-//This functions details the GET, PUT, and POST commands for the client to use to send requests to the server via an API
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 func routes(_ app: Application) throws {
-    var sudokuIDs = [Int:Board]() //class of boardsData
+    var sudokuIDs = [Int: Game]()
     let latestBoardID = boardID()
     
     //making peace with vapor
@@ -28,10 +24,7 @@ func routes(_ app: Application) throws {
         return "vapor my beloved"
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //The POST command below creates a new game and also creates a board ID associated with the specific game created.
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     app.post("games") { req -> String in 
 
         let encoder = JSONEncoder()
@@ -40,7 +33,7 @@ func routes(_ app: Application) throws {
         let game = Game()
         let id = latestBoardID.updateBoardID() //check if this works
         
-        sudokuIDs[id] = board
+        sudokuIDs[id] = game
         
         guard let data = try? encoder.encode(id),
               let string = String(data: data, encoding: .utf8) else {
