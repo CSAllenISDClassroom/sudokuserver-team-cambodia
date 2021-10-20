@@ -3,32 +3,18 @@ import Vapor
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //The struct SudokuBoard includes the representation of the board as a string and the boardID as an Integer as well
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-struct SudokuBoard: Content {
-    var board: String
-    var boardID: Int
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//The struct ResponseData maintains the variables action, payload, response, and statusCode
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-struct ResponseData : Content{
-    
-    var action : String
-    var payload : String
-    var response : String
-    var statusCode : String
-
-}
 
 struct ID : Content {
     var id : Int
 }
-var sudokuIDs = [Int:Board]() //class of boardsData
-let latestBoardID = boardID()
+
 
 //This functions details the GET, PUT, and POST commands for the client to use to send requests to the server via an API
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 func routes(_ app: Application) throws {
+    var sudokuIDs = [Int:Board]() //class of boardsData
+    let latestBoardID = boardID()
+    
     //making peace with vapor
     app.get { req in
         return "vapor my beloved"
@@ -38,16 +24,22 @@ func routes(_ app: Application) throws {
     //The POST command below creates a new game and also creates a board ID associated with the specific game created.
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    app.post("games") { req -> Response in 
+    app.post("games") { req -> String in 
 
-        //The variable board is of the type Board, which creates a new game, while id is the type boardID and is the new board ID for the new game
+        let encoder = JSONEncoder()
+
+        let difficulty: String? = req.query["difficulty"]
         let board = Board()
-        let id = latestBoardID.updateBoardID()
+        let id = latestBoardID.updateBoardID() //check if this works
         
-        let response = Response(body:(sudokuIDs[id])) 
-
-        //This return statement is of the type ResponseData and communicates to the client of the new game, boardID, and the server's statusCode
-        return response 
+        sudokuIDs[id] = board
+        
+        guard let data = try? encoder.encode(id),
+              let string = String(data: data, encoding: .utf8) else {
+            fatalError("Failed to encode ID to JSON")
+        }
+        
+        return string
     }
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
