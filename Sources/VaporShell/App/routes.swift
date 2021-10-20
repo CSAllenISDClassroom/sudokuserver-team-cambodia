@@ -29,7 +29,13 @@ func routes(_ app: Application) throws {
 
         let encoder = JSONEncoder()
 
-        guard let difficulty: String? = req.query["difficulty"]
+        guard let difficulty: String? = req.query["difficulty"] else {
+            throw Abort(.badRequest, reason: "difficulty not provided")
+        }
+
+        if difficulty != "easy" || difficulty != "medium" || difficulty != "hard" || difficulty != "hell" {
+            throw Abort(.badRequest, reason: "invalid difficulty")
+        }
         
         let game = Game(difficulty: difficulty)
         let id = latestBoardID.updateBoardID() //check if this works
@@ -40,7 +46,8 @@ func routes(_ app: Application) throws {
               let string = String(data: data, encoding: .utf8) else {
             fatalError("Failed to encode ID to JSON")
         }
-        
+
+        Response(status: .created) //is this correct?
         return string
     }
     
