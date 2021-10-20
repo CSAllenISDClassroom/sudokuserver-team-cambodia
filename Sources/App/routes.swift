@@ -28,6 +28,7 @@ func routes(_ app: Application) throws {
 
         let encoder = JSONEncoder()
 
+        let difficulty: String? = req.query["difficulty"]
         let board = Board()
         let id = latestBoardID.updateBoardID() //check if this works
         
