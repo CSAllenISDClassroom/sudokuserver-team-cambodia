@@ -3,6 +3,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 class boardID {
     private var boardIDs = [Int]()
+    private var latestBoardID = -1
 
     //This function will be invoked in order to create a new boardID when requested by the client in routes.swift
     public func updateBoardID() -> Int {
@@ -11,7 +12,7 @@ class boardID {
 
         repeat {
             for ID in boardIDs {
-                if ID = boardID.latestBoard {
+                if ID == possibleBoardID {
                     idIsValid = false
                     break
                 }
@@ -19,6 +20,7 @@ class boardID {
         } while idIsNotValid
 
         boardIDs.append(possibleBoardID)
+        latestBoardID = possibleBoardID
         return possibleBoardID
     }
 }
