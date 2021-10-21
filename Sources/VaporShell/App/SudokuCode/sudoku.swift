@@ -24,7 +24,7 @@ var board = [s(r: 1, c: 1, b: 1), s(r: 1, c: 2, b: 1), s(r: 1, c: 3, b: 1), s(r:
              s(r: 9, c: 1, b: 7), s(r: 9, c: 2, b: 7), s(r: 9, c: 3, b: 7), s(r: 9, c: 4, b: 8), s(r: 9, c: 5, b: 8), s(r: 9, c: 6, b: 8), s(r: 9, c: 7, b: 9), s(r: 9, c: 8, b: 9), s(r: 9, c: 9, b: 9)
 ]
 
-func printBoard() {
+/* func printBoard() {
     for i in 0 ..< board.count {
         if i % 9 == 0 {
             print()
@@ -33,7 +33,7 @@ func printBoard() {
     }
     print()
 }
-
+*/
 
 
 func checkRow(rowNum: Int, number: Int) -> Bool{

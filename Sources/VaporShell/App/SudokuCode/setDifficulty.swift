@@ -13,6 +13,17 @@ func removeNumbers(numbersToRemove:Int) {
 
 } 
 func setDifficulty(difficulty: String) {
+<<<<<<< HEAD
+    func remove() {
+        var completeBoard = String(printBoard())
+        var string = ""
+        for x in completeBoard {
+            string.append(x)
+        }
+        print(string)
+    }
+    remove()
+=======
 
     if difficulty == "easy" {
         removeNumbers(numbersToRemove: 5)      
@@ -41,3 +52,4 @@ func removeNumberFromSudokuBoard(columnIndex:Int,rowIndex: Int) {
     }
 
 } 
+>>>>>>> b0bf89cda0fbc44792c19ff9f67b31b28fc8751a
