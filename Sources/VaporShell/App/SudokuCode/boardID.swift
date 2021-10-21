@@ -2,11 +2,23 @@
 //This class allows the boardID to persist with a specific game as an instance of the class boardID below
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 class boardID {
-    private static var latestBoardID = -1
+    private var boardIDs = [Int]()
 
     //This function will be invoked in order to create a new boardID when requested by the client in routes.swift
     public func updateBoardID() -> Int {
-        boardID.latestBoardID += 1
-        return boardID.latestBoardID
+        let possibleBoardID = Int.random(in: 0...1000000)
+        idIsNotValid = true // Assumes that the id is not valid at first
+
+        repeat {
+            for ID in boardIDs {
+                if ID = boardID.latestBoard {
+                    idIsValid = false
+                    break
+                }
+            }
+        } while idIsNotValid
+
+        boardIDs.append(possibleBoardID)
+        return possibleBoardID
     }
 }
