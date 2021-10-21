@@ -2,7 +2,7 @@
 import Vapor
 import Foundation
 
-
+let sudoku = sudoku 
 func removeNumbers(numbersToRemove:Int) {
 //removes the numbers 
     for _ in  1...numbersToRemove {
