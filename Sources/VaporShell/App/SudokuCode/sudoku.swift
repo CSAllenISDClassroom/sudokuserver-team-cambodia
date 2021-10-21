@@ -153,3 +153,34 @@ func generateBoard() -> [[Int]] {
     return twoDBoard 
 }
 
+func printBoard() {
+    var testBoard = generateBoard()
+    print(testBoard)
+
+    for boxes in 0 ..< 3 {
+        for boxIndex in 0 ..< 3 {
+            for cellIndex in 0 ..< 3 {
+                print(testBoard[boxIndex][cellIndex + (boxes * 3)], terminator:"")
+            }
+        }
+        print()
+    }
+
+    for boxes in 0 ..< 3 {
+        for boxIndex in 3 ..< 6 {
+            for cellIndex in 0 ..< 3 {
+                print(testBoard[boxIndex][cellIndex + (boxes * 3)], terminator:"")
+            }
+        }
+        print()
+    }
+
+    for boxes in 0 ..< 3 {
+        for boxIndex in 6 ..< 9 {
+            for cellIndex in 0 ..< 3 {
+                print(testBoard[boxIndex][cellIndex + (boxes * 3)], terminator:"")
+            }
+        }
+        print()
+    }
+}
