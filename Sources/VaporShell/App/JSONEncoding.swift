@@ -26,6 +26,13 @@ struct CodableBox : Codable {
 
 struct CodableBoard : Codable {
     let board : [CodableBox]
-    
+
+    init(board:[[Int]]) {
+        var board = [CodableBox]()
+        for boxIndex in board {
+            board.append(CodableBox(boxIndex:boxIndex, boxValues: board[boxIndex]))
+        }
+        self.board = board
+    }
 }
     
