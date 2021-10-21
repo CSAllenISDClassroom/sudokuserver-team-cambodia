@@ -1,12 +1,13 @@
-import sudoku
+//import sudoku
 import Vapor
 import Foundation
 
+
 func removeNumbers(numbersToRemove:Int) {
 //removes the numbers 
-    for number in  1...numbersToRemove {
+    for _ in  1...numbersToRemove {
         //removes a number at a random box Index adn cell index
-        removeNumberFromSudokuBoard(boxIndex:Int.random(in(0..<9)), cellIndex: Int.random(in(0..<9))) 
+        removeNumberFromSudokuBoard(columnIndex:Int.random(in(0..<9)), rowIndex: Int.random(in(0..<9))) 
         
     }
 
@@ -29,7 +30,14 @@ func setDifficulty(difficulty: String) {
     
 }
 
-func removeNumberFromSucokuBoard(boxIndex:Int,cellIndex: Int) {
+func removeNumberFromSudokuBoard(columnIndex:Int,rowIndex: Int) {
+//sodoku.board is the board made up of s classes 
+    for s in  sudoku.board {
+        if s.column == columnIndex && s.row == rowIndex  {
 
+            s.number == nill 
+
+        }
+    }
 
 } 
