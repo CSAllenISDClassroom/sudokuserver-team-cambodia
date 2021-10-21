@@ -77,8 +77,14 @@ func routes(_ app: Application) throws {
             throw Abort(.badRequest, reason: "Failed to encode playerBoard to JSON")
         }
 
+<<<<<<< HEAD
+
+       //This return statement responds to the client with the completed board with the server's statusCode as "200 OK"
+        return ResponseData(action: "None", payload: "None", response: cells.finalBoard, statusCode: "200 OK")
+=======
         //This return statement responds to the client with the completed board with the server's statusCode as "200 OK"
         return Response(status: .ok)
+>>>>>>> 13dc662c09b63438ebe036bfbab9abd1bc4cd648
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
