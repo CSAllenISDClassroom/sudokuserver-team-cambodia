@@ -26,17 +26,6 @@ class SudokuBoard {
                  s(r: 9, c: 1, b: 7), s(r: 9, c: 2, b: 7), s(r: 9, c: 3, b: 7), s(r: 9, c: 4, b: 8), s(r: 9, c: 5, b: 8), s(r: 9, c: 6, b: 8), s(r: 9, c: 7, b: 9), s(r: 9, c: 8, b: 9), s(r: 9, c: 9, b: 9)
     ]
 
-    /* func printBoard() {
-       for i in 0 ..< board.count {
-       if i % 9 == 0 {
-       print()
-       }
-       print(board[i].number, terminator: " ")
-       }
-       print()
-       }
-     */
-
     func returnBoard() -> [s] {
         return board
     }
@@ -93,23 +82,14 @@ class SudokuBoard {
     }
 
     func placeNum(boxNum : Int, number : Int) -> Bool{
-        var isPlaced : Bool
         let indexesOfBox = getIndexesOfBox(boxNum : boxNum)
-        var placedNumOnBoard = false
         for _ in 1 ... 100 {
             let randomIndex = indexesOfBox[Int.random(in: 0 ..< indexesOfBox.count)]
             if board[randomIndex].number == 0 && checkRow(rowNum : board[randomIndex].row, number : number) && checkColumn(columnNum : board[randomIndex].column, number : number) && checkBox(boxNum: board[randomIndex].box, number : number) {
                 board[randomIndex].number = number
-                placedNumOnBoard = true
-                isPlaced = true
                 break
             }
         }
-
-        if !placedNumOnBoard {
-            isPlaced = true
-        }
-        return isPlaced
     }
 
     func generateBoard() -> [[Int]] {
@@ -119,7 +99,7 @@ class SudokuBoard {
         while !isComplete {
             for box in 1 ... 9 {
                 for num in 1 ... 9 {
-                    placeNum(boxNum : box, number : num)
+                    let _ = placeNum(boxNum : box, number : num)
                 }
             }
 
@@ -154,13 +134,13 @@ class SudokuBoard {
     }
 
     func printBoard() -> String {
-        //  var testBoard = generateBoard()
+        let testBoard = generateBoard()
         //  print(testBoard)
         var board = ""
         for boxes in 0 ..< 3 {
             for boxIndex in 0 ..< 3 {
                 for cellIndex in 0 ..< 3 {
-                    board += (testBoard[boxIndex][cellIndex + (boxes * 3)], terminator:"")
+                    board.append(("\(testBoard[boxIndex][cellIndex + (boxes * 3)])"))
                 }
                 print()
             }
@@ -170,7 +150,7 @@ class SudokuBoard {
         for boxes in 0 ..< 3 {
             for boxIndex in 3 ..< 6 {
                 for cellIndex in 0 ..< 3 {
-                    board += (testBoard[boxIndex][cellIndex + (boxes * 3)], terminator:"")
+                    board.append("\(testBoard[boxIndex][cellIndex + (boxes * 3)])")
                 }
                 print()
             }
@@ -180,7 +160,7 @@ class SudokuBoard {
         for boxes in 0 ..< 3 {
             for boxIndex in 6 ..< 9 {
                 for cellIndex in 0 ..< 3 {
-                    board += (testBoard[boxIndex][cellIndex + (boxes * 3)], terminator:"")
+                    board.append("\(testBoard[boxIndex][cellIndex + (boxes * 3)])")
                 }
             }
             board += "\n"
@@ -192,8 +172,8 @@ class SudokuBoard {
         print(printBoard())
     } 
 
-    func repeatedBoardValues() {
-        var array = [Int]
+    func repeatedBoardValues(playerBoard:[[Int]], solutionBoard:[[Int]]) {
+        var repeatedValuesArray : [[Int]]
         for boxes in playerBoard {
             for boxIndex in playerBoard {
                 for cellIndex in playerBoard {
@@ -202,8 +182,7 @@ class SudokuBoard {
                 print()
             }
         }
-        for values in array {
-        }
+        
     }
 
 
