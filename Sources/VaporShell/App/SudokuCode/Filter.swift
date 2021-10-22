@@ -93,7 +93,7 @@ func placeNum(boxNum : Int, number : Int) -> Bool{
         return false
     }
 }
- 
+
 
 func generateBoard() -> [[Int]] {
 
@@ -138,9 +138,9 @@ func generateBoard() -> [[Int]] {
     return twoDBoard
 }
 
-func allBoardValues() {
+func printBoard() {
     var testBoard = generateBoard()
-    print(testBoard)
+    //print(testBoard)
 
     for boxes in 0 ..< 3 {
         for boxIndex in 0 ..< 3 {
@@ -170,30 +170,63 @@ func allBoardValues() {
     }
 }
 
+func allBoardValues() {
+    var bob = generateBoard()
 
-func Filter(Filter: String) -> [[Int]] {
+    for boxes in 0 ..< 3 {
+        for boxIndex in 0 ..< 3 {
+            for cellIndex in 0 ..< 2 {
+                print(bob[boxIndex][cellIndex + (boxes * 3)], terminator:"0")
+            }
+        }
+        print()
+    }
 
-    var specifiedFilter = Filter
+    for boxes in 0 ..< 3 {
+        for boxIndex in 3 ..< 6 {
+            for cellIndex in 0 ..< 2 {
+                print(bob[boxIndex][cellIndex + (boxes * 3)], terminator:"0")
+            }
+        }
+        print()
+    }
 
-    switch specifiedFilter {
-
-    case "all":
-
-        return allBoardValues()
-
-    case "repeated":
-
-        return repeatedBoardValues()
-        
-    case "incorrect":
-
-        return incorrectBoardValues()
-
-    default :
-
-        specifiedFilter = "all"
+    for boxes in 0 ..< 3 {
+        for boxIndex in 6 ..< 9 {
+            for cellIndex in 0 ..< 2 {
+                print(bob[boxIndex][cellIndex + (boxes * 3)], terminator:"0")
+            }
+        }
+        print()
     }
 
 }
-        
-Filter(Filter: "all")
+/*
+ func Filter(Filter: String) -> [[Int]] {
+
+ var specifiedFilter = Filter
+
+ switch specifiedFilter {
+
+ case "all":
+
+ return allBoardValues()
+
+ case "repeated":
+
+ return repeatedBoardValues()
+
+ case "incorrect":
+
+ return incorrectBoardValues()
+
+ default :
+
+ specifiedFilter = "all"
+ }
+
+ }
+ */
+printBoard()
+allBoardValues()
+ */
