@@ -42,13 +42,6 @@ func routes(_ app: Application) throws {
         
         sudokuIDs[id] = game
 
-        //encoding data to be returned
-        let encoder = JSONEncoder()
-        guard let data = try? encoder.encode(id),
-              let string = String(data: data, encoding: .utf8) else {
-            throw Abort(.badRequest, reason: "Failed to encode ID to JSON")
-        }
-
         return Response(status: .created) //is this correct? 
     }
     
@@ -63,20 +56,13 @@ func routes(_ app: Application) throws {
             throw Abort(.badRequest, reason: "invalid ID")
         }
 
-        guard let cells = try? sudokuIDs[intID] else { //is this correct?
+        guard let cells = sudokuIDs[intID] else { //is this correct?
             throw Abort(.badRequest, reason: "invalid ID")
         }
         
         if filter != "all" && filter != "repeated" && filter != "incorrect" {
             throw Abort(.badRequest, reason: "invalid filter")
         }
-
-        let encoder = JSONEncoder()
-        guard let data = try? encoder.encode(cells.playerBoard), //encoder.encode(cells.playerBoard.filter(filter: filter))
-              let string = String(data: data, encoding: .utf8) else {
-            throw Abort(.badRequest, reason: "Failed to encode playerBoard to JSON")
-        }
-        getFilter(Filter:filter, Board:playerBoard)
         
        //This return statement responds to the client with the completed board with the server's statusCode as "200 OK"
         return Response(status: .ok)
@@ -89,7 +75,7 @@ func routes(_ app: Application) throws {
             throw Abort(.badRequest, reason: "invalid ID")
         }
 
-        guard let cells = try? sudokuIDs[intID] else { //is this correct?
+        guard let cells = sudokuIDs[intID] else { //is this correct?
             throw Abort(.badRequest, reason: "invalid ID")
         }
 
@@ -111,17 +97,20 @@ func routes(_ app: Application) throws {
             throw Abort(.badRequest, reason: "cellIndex is out of range 0 ... 8")
         }
 
-        
-        guard let input = req.body.bytes else {
-            throw Abort(.badRequest, reason: "no input provided")
-        }
-
-        if input > 9 || input < 1 || input != nil {
-            throw Abort(.badRequest, reason: "value is out of range 1 ... 9 or null")
-        }
-        
         let jsonDecoder = JSONDecoder()
-
+        
+        struct CellValue: Decodable {
+            let value: Int?
+        }
+        
+        let cellValue = try req.content.decode(CellValue.self)
+        
+        
+        guard cellValue.value == nil || (1 ... 9).contains(cellValue.value!) else {
+             throw Abort(.badRequest, reason: "value is out of range 1 ... 9 or null")
+        }
+        
+        
         //This return statement communicates to the client whether or not their requested value has been placed in the boxIndex and cellIndex
         return Response(status: .ok, body :"")
     }
