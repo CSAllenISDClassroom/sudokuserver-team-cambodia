@@ -10,7 +10,7 @@ class Game {
 
     init(difficulty: String) {
         playerBoard = Board() //add difficulty parameter later
-        shadowBoard = Board() 
+        shadowBoard = playerBoard //playerBoard.setDifficulty(difficulty: difficulty) 
     }
 }
 
@@ -79,12 +79,9 @@ func routes(_ app: Application) throws {
         getFilter(Filter:filter, Board:playerBoard)
         
        //This return statement responds to the client with the completed board with the server's statusCode as "200 OK"
-        return ResponseData(action: "None", payload: "None", response: cells.finalBoard, statusCode: "200 OK")
+        return Response(status: .ok)
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //The PUT command below allows the client to place a specific value at a specified cell on their board
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     app.put("games", ":id", "cells", ":boxIndex", ":cellIndex") { req -> Response in
 
         guard let id  = req.parameters.get("id"),
@@ -114,7 +111,16 @@ func routes(_ app: Application) throws {
             throw Abort(.badRequest, reason: "cellIndex is out of range 0 ... 8")
         }
 
-        //how do i get user input??
+        
+        guard let input = req.body.bytes else {
+            throw Abort(.badRequest, reason: "no input provided")
+        }
+
+        if input > 9 || input < 1 || input != nil {
+            throw Abort(.badRequest, reason: "value is out of range 1 ... 9 or null")
+        }
+        
+        let jsonDecoder = JSONDecoder()
 
         //This return statement communicates to the client whether or not their requested value has been placed in the boxIndex and cellIndex
         return Response(status: .ok, body :"")
