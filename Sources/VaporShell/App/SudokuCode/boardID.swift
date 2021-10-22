@@ -13,7 +13,7 @@ class boardID {
         repeat {
             for ID in boardIDs {
                 if ID == possibleBoardID {
-                    idIsValid = false
+                    idIsNotValid = false
                     break
                 }
             }
