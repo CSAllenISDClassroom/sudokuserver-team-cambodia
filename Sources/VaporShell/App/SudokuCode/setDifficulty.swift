@@ -4,10 +4,10 @@ import Foundation
 
 func removeNumberFromSudokuBoard(columnIndex:Int,rowIndex: Int) {
 //sodoku.board is the board made up of s classes 
-    for s in sudoku.board {
-        if s.column == columnIndex && s.row == rowIndex  {
+    for i in SudokuBoard.board {
+        if SudokuBoard.board[i].column == columnIndex && SudokuBoard.board[i].row == rowIndex  {
             
-            s.number == 0
+            s.number == nil
 
         }
     }
