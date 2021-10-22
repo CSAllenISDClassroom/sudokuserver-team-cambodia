@@ -187,29 +187,29 @@ func repeatedValues(Board:[[Int]]) {
 
 func Filter(Filter: String, Board:[[Int]]) -> [[Int]] {
 
- var specifiedFilter = Filter
+    var specifiedFilter = Filter
 
- switch specifiedFilter {
+    switch specifiedFilter {
 
- case "all":
+    case "all":
 
- return allBoardValues()
+        return allBoardValues()
 
- case "repeated":
+    case "repeated":
 
-     return repeatedBoardValues(Board:Board)
+        return repeatedBoardValues(Board:Board)
 
- case "incorrect":
+    case "incorrect":
 
- return incorrectBoardValues()
+        return incorrectBoardValues()
 
- default :
+    default :
 
- specifiedFilter = "all"
- }
+        specifiedFilter = "all"
+    }
 
- }
- 
+}
+
 printBoard()
 allBoardValues()
 
