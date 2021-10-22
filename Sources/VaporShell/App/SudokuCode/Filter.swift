@@ -138,7 +138,7 @@ func generateBoard() -> [[Int]] {
     return twoDBoard
 }
 
-func printBoard() {
+func allBoardValues() {
     var testBoard = generateBoard()
     //print(testBoard)
 
@@ -170,39 +170,22 @@ func printBoard() {
     }
 }
 
-func allBoardValues() {
-    var bob = generateBoard()
-
-    for boxes in 0 ..< 3 {
-        for boxIndex in 0 ..< 3 {
-            for cellIndex in 0 ..< 2 {
-                print(bob[boxIndex][cellIndex + (boxes * 3)], terminator:"0")
+func repeatedValues(Board:[[Int]]) {
+    var repeatedValuesBoard = Board
+    for boxes in Board {
+        for boxIndex in 0 ..< 9 {
+            for cellIndex in 0 ..< 9 {
+                let x = boxIndex
+                let duplicates = Array(Set(x.filter({ (i: Int) in x.filter({ $0 == i }).count > 1})))
+                if duplicates.count > 1 {
+                    repeatedValuesBoard.append(duplicates)
+                }
             }
         }
-        print()
     }
-
-    for boxes in 0 ..< 3 {
-        for boxIndex in 3 ..< 6 {
-            for cellIndex in 0 ..< 2 {
-                print(bob[boxIndex][cellIndex + (boxes * 3)], terminator:"0")
-            }
-        }
-        print()
-    }
-
-    for boxes in 0 ..< 3 {
-        for boxIndex in 6 ..< 9 {
-            for cellIndex in 0 ..< 2 {
-                print(bob[boxIndex][cellIndex + (boxes * 3)], terminator:"0")
-            }
-        }
-        print()
-    }
-
 }
-/*
- func Filter(Filter: String) -> [[Int]] {
+
+func Filter(Filter: String, Board:[[Int]]) -> [[Int]] {
 
  var specifiedFilter = Filter
 
@@ -214,7 +197,7 @@ func allBoardValues() {
 
  case "repeated":
 
- return repeatedBoardValues()
+     return repeatedBoardValues(Board:Board)
 
  case "incorrect":
 
@@ -226,7 +209,7 @@ func allBoardValues() {
  }
 
  }
- */
+ 
 printBoard()
 allBoardValues()
- */
+
