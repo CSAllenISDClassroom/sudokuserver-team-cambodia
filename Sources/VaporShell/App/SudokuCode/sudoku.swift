@@ -4,7 +4,7 @@ class SudokuBoard {
         public var row : Int
         public var column : Int
         public var box : Int
-        public var number = 0
+        public var number : Int? 
         
         init(r: Int, c: Int, b: Int) {
             self.row = r
