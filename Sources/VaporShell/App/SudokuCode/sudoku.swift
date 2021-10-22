@@ -1,3 +1,5 @@
+import Foundation 
+
 class SudokuBoard {
 
     class s{
@@ -93,7 +95,44 @@ class SudokuBoard {
         }
     }
 
-    
+    //ABOVE IS LOGIC AND CODE TO MAKE A VALID SUDOKU BOARD
+    //BELOW IS PROPER FORMATTING
+
+    struct Position: Codable {
+        let boxIndex: Int
+        let cellIndex: Int
+    }
+
+    struct Cell: Codable {
+        let position: Position
+        let value: Int?
+    }
+
+    struct Box: Codable {
+        let cells: [Cell]
+
+        init(boxIndex: Int) {
+            var cells = [Cell]()
+            for cellIndex in 0 ..< 9 {
+                cells.append(Cell(position: Position(boxIndex: boxIndex, cellIndex: cellIndex), value: nil))
+            }
+            self.cells = cells
+        }
+    }
+
+    struct Board: Codable {
+        let board: [Box]
+
+        init() {
+            var board = [Box]()
+            for boxIndex in 0 ..< 9 {
+                board.append(Box(boxIndex: boxIndex))
+            }
+            self.board = board
+        }
+    }
+
+   
     func generateBoard() -> [[Int]] {
         var isComplete = false
         var numsZero = 0
@@ -195,7 +234,7 @@ class SudokuBoard {
         //             incorrectValuesArray.append(cellIndex)    
         //         }
         //     }
-            
+        
         // }
         // return incorrectValuesArray
 
@@ -225,42 +264,42 @@ class SudokuBoard {
 //difficulty
 ////////////////////////////
 
-    func removeNumberFromSudokuBoard(columnIndex:Int,rowIndex: Int) {
-        //sodoku.board is the board made up of s classes
-        for i in 0 ..< SudokuBoard().returnBoard().count {
-            if SudokuBoard().returnBoard()[i].column == columnIndex && SudokuBoard().returnBoard()[i].row == rowIndex  {
+func removeNumberFromSudokuBoard(columnIndex:Int,rowIndex: Int) {
+    //sodoku.board is the board made up of s classes
+    for i in 0 ..< SudokuBoard().returnBoard().count {
+        if SudokuBoard().returnBoard()[i].column == columnIndex && SudokuBoard().returnBoard()[i].row == rowIndex  {
 
-                SudokuBoard().returnBoard()[i].number = nil
+            SudokuBoard().returnBoard()[i].number = nil
 
-            }
         }
+    }
+
+}
+
+func removeNumbers(numbersToRemove:Int) {
+    //removes the numbers
+    for _ in  1...numbersToRemove {
+        //removes a number at a random box Index and cell index
+        removeNumberFromSudokuBoard(columnIndex:(Int.random(in:0..<9)), rowIndex: Int.random(in: 0..<9))
 
     }
 
-    func removeNumbers(numbersToRemove:Int) {
-        //removes the numbers
-        for _ in  1...numbersToRemove {
-            //removes a number at a random box Index and cell index
-            removeNumberFromSudokuBoard(columnIndex:(Int.random(in:0..<9)), rowIndex: Int.random(in: 0..<9))
+}
 
-        }
+func setDifficulty(difficulty: String) {
 
+    if difficulty == "easy" {
+        removeNumbers(numbersToRemove: 5)
+    }
+    if difficulty == "medium" {
+        removeNumbers(numbersToRemove: 10)
+    }
+    if difficulty == "hard" {
+        removeNumbers(numbersToRemove: 15)
+    }
+    if difficulty == "hell" {
+        removeNumbers(numbersToRemove: 20)
     }
 
-    func setDifficulty(difficulty: String) {
 
-        if difficulty == "easy" {
-            removeNumbers(numbersToRemove: 5)
-        }
-        if difficulty == "medium" {
-            removeNumbers(numbersToRemove: 10)
-        }
-        if difficulty == "hard" {
-            removeNumbers(numbersToRemove: 15)
-        }
-        if difficulty == "hell" {
-            removeNumbers(numbersToRemove: 20)
-        }
-
-
-    }
+}
