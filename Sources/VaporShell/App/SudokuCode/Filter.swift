@@ -69,8 +69,13 @@ func allBoardValues() {
     print(playerBoard)
 }
 
+
+func getFilter(Filter:String, Board:[[Int]]) {
+    Filter(Filter:Filter, Board:Board)
+}
+
 //using switch case structure to organize available filters 
-func Filter(Filter: String, Board:[[Int]]) -> [[Int]] {
+func Filter(Filter: String, Board:[[Int]]) {
 
     var specifiedFilter = Filter
 
@@ -78,15 +83,15 @@ func Filter(Filter: String, Board:[[Int]]) -> [[Int]] {
 
     case "all":
 
-        return allBoardValues()
+         allBoardValues()
 
     case "repeated":
 
-        return repeatedBoardValues(Board:Board)
+         repeatedBoardValues(Board:Board)
 
     case "incorrect":
 
-        return incorrectBoardValues()
+         incorrectBoardValues()
 
     default :
 
