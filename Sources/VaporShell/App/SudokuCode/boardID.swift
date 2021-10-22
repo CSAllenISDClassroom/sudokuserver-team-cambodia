@@ -8,7 +8,7 @@ class boardID {
     //This function will be invoked in order to create a new boardID when requested by the client in routes.swift
     public func updateBoardID() -> Int {
         let possibleBoardID = Int.random(in: 0...1000000)
-        idIsNotValid = true // Assumes that the id is not valid at first
+        var idIsNotValid = true // Assumes that the id is not valid at first
 
         repeat {
             for ID in boardIDs {
