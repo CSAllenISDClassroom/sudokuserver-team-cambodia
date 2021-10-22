@@ -5,11 +5,11 @@ struct ID : Content {
 }
 
 class Game {
-    var playerBoard : Board
-    var shadowBoard : Board 
+    var playerBoard : SudokuBoard
+    var shadowBoard : SudokuBoard
 
     init(difficulty: String) {
-        playerBoard = Board() //add difficulty parameter later
+        playerBoard = SudokuBoard() //add difficulty parameter later
         shadowBoard = playerBoard //playerBoard.setDifficulty(difficulty: difficulty) 
     }
 }
