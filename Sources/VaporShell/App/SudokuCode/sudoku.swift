@@ -37,7 +37,9 @@ class SudokuBoard {
        }
      */
 
-
+    func returnBoard() -> [s] {
+        return board
+    }
     func checkRow(rowNum: Int, number: Int) -> Bool{
 
         for square in board {
