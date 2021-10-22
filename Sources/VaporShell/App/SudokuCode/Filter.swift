@@ -1,3 +1,5 @@
+import Vapor
+/*
 class s{
     public var row : Int
     public var column : Int
@@ -137,8 +139,8 @@ func generateBoard() -> [[Int]] {
     }
     return twoDBoard
 }
-
-func allBoardValues() {
+*/
+func correctBoardValues() {
     var testBoard = generateBoard()
     //print(testBoard)
 
@@ -183,6 +185,19 @@ func repeatedValues(Board:[[Int]]) {
             }
         }
     }
+    print(repeatedValuesBoard)
+}
+
+func incorrectValues(Board:[[Int]]) {
+    var correctValues = generateBoard()
+    var incorrectValues = [[Int]]()
+    for boxes in correctValues {
+        for boxIndex in 0 ..< 3 {
+            for cellIndex in 0 ..< 3 {
+                
+            }
+        }
+    }
 }
 
 func Filter(Filter: String, Board:[[Int]]) -> [[Int]] {
@@ -210,6 +225,3 @@ func Filter(Filter: String, Board:[[Int]]) -> [[Int]] {
 
  }
  
-printBoard()
-allBoardValues()
-
