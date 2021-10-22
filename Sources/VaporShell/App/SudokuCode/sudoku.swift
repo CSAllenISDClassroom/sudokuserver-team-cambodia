@@ -92,10 +92,10 @@ class SudokuBoard {
 
     func placeNum(boxNum : Int, number : Int) -> Bool{
         var isPlaced : Bool
-        var indexesOfBox = getIndexesOfBox(boxNum : boxNum)
+        let indexesOfBox = getIndexesOfBox(boxNum : boxNum)
         var placedNumOnBoard = false
         for _ in 1 ... 100 {
-            var randomIndex = indexesOfBox[Int.random(in: 0 ..< indexesOfBox.count)]
+            let randomIndex = indexesOfBox[Int.random(in: 0 ..< indexesOfBox.count)]
             if board[randomIndex].number == 0 && checkRow(rowNum : board[randomIndex].row, number : number) && checkColumn(columnNum : board[randomIndex].column, number : number) && checkBox(boxNum: board[randomIndex].box, number : number) {
                 board[randomIndex].number = number
                 placedNumOnBoard = true
@@ -110,13 +110,7 @@ class SudokuBoard {
         return isPlaced
     }
 
-    func createBoxes() {
-        
-    }
-
     func generateBoard() -> [[Int]] {
-
-
         var isComplete = false
         var numsZero = 0
 
