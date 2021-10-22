@@ -1,38 +1,41 @@
 import Foundation
 
-let encoder = JSONEncoder()
-
-struct CodablePosition : Codable {
+struct Position : Codable {
     let boxIndex : Int
     let cellIndex : Int
 }
 
-struct CodableCell : Codable {
-    let position : CodablePosition
+struct Cell : Codable {
+    let position : Position
     let value : Int?
 }
 
-struct CodableBox : Codable {
-    let cells : [CodableCell]
+struct Box : Codable {
+    let cells : [Cell]
 
     init(boxIndex: Int, boxValues: [Int]) {
-        var cells = [codableCells]
+        var cells = [Cell]
         for cellIndex in 0..<9 {
-            cells.append(CodableCell(position: CodablePosition(boxIndex: boxIndex, cellIndex: cellIndex), value: boxValues[cellIndex]))
+            cells.append(Cell(position: Position(boxIndex: boxIndex, cellIndex: cellIndex), value: boxValues[cellIndex]))
         }
         self.cells = cells
     }
 }
 
-struct CodableBoard : Codable {
-    let board : [CodableBox]
+struct Board : Codable {
+    let board : [Box]
 
     init(board:[[Int]]) {
-        var board = [CodableBox]()
+        var board = [Box]()
         for boxIndex in board {
-            board.append(CodableBox(boxIndex:boxIndex, boxValues: board[boxIndex]))
+            board.append(Box(boxIndex:boxIndex, boxValues: board[boxIndex]))
         }
         self.board = board
     }
 }
-    
+
+func convertToBoard() -> Board {
+    let board = SudokuBoard()
+    board.generateBoard()
+    let codableBoard = Board(board)
+}
