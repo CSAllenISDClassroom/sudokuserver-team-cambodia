@@ -202,26 +202,34 @@ func incorrectValues(Board:[[Int]]) {
 
 func Filter(Filter: String, Board:[[Int]]) -> [[Int]] {
 
- var specifiedFilter = Filter
+    var specifiedFilter = Filter
 
- switch specifiedFilter {
+    switch specifiedFilter {
 
- case "all":
+    case "all":
 
- return allBoardValues()
+        return allBoardValues()
 
- case "repeated":
+    case "repeated":
 
-     return repeatedBoardValues(Board:Board)
+        return repeatedBoardValues(Board:Board)
 
- case "incorrect":
+    case "incorrect":
 
- return incorrectBoardValues()
+        return incorrectBoardValues()
 
- default :
+    default :
 
- specifiedFilter = "all"
- }
+        specifiedFilter = "all"
+    }
 
+}
+
+<<<<<<< HEAD
  }
  
+=======
+printBoard()
+allBoardValues()
+
+>>>>>>> be4adc24bdd21c8ca5640a344d608a9985d1b37f
