@@ -18,7 +18,7 @@ struct CodableBox : Codable {
     init(boxIndex: Int, boxValues: [Int]) {
         var cells = [codableCells]
         for cellIndex in 0..<9 {
-            cells.append(CellCodable(position: CodablePosition(boxIndex: boxIndex, cellIndex: cellIndex), value: boxValues[cellIndex]))
+            cells.append(CodableCell(position: CodablePosition(boxIndex: boxIndex, cellIndex: cellIndex), value: boxValues[cellIndex]))
         }
         self.cells = cells
     }
