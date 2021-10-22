@@ -153,34 +153,69 @@ func generateBoard() -> [[Int]] {
     return twoDBoard 
 }
 
-func printBoard() {
-    var testBoard = generateBoard()
-    print(testBoard)
-
+func printBoard() -> String {
+  //  var testBoard = generateBoard()
+  //  print(testBoard)
+    var board = ""
     for boxes in 0 ..< 3 {
         for boxIndex in 0 ..< 3 {
             for cellIndex in 0 ..< 3 {
-                print(testBoard[boxIndex][cellIndex + (boxes * 3)], terminator:"")
+                board += (testBoard[boxIndex][cellIndex + (boxes * 3)], terminator:"")
             }
         }
-        print()
+        board += "\n"
     }
 
     for boxes in 0 ..< 3 {
         for boxIndex in 3 ..< 6 {
             for cellIndex in 0 ..< 3 {
-                print(testBoard[boxIndex][cellIndex + (boxes * 3)], terminator:"")
+                board += (testBoard[boxIndex][cellIndex + (boxes * 3)], terminator:"")
             }
         }
-        print()
+        board += "\n"
     }
 
     for boxes in 0 ..< 3 {
         for boxIndex in 6 ..< 9 {
             for cellIndex in 0 ..< 3 {
-                print(testBoard[boxIndex][cellIndex + (boxes * 3)], terminator:"")
+                board += (testBoard[boxIndex][cellIndex + (boxes * 3)], terminator:"")
             }
         }
-        print()
+        board += "\n"
+    }
+    return board
+}
+
+func allBoardValues()  {
+    print(printBoard())
+} 
+
+func repeatedBoardValues() {
+    var array = [Int]
+    for boxes in playerBoard {
+        for boxIndex in playerBoard {
+            for cellIndex in playerBoard {
+                array.append(cellIndex)
+            }
+        }
+    }
+    for values in array {
+    }
+}
+
+
+func filter(filter:String) {
+    var selectedFilter = filter
+
+    switch selectedfilter {
+    case "all":
+        allBoardValues()
+    case "repeated":
+        repeatedBoardValues()
+    case "incorrect":
+        incorrectBoardValues()
+    default:
+        selectedFilter = "all"
+
     }
 }
