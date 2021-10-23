@@ -82,7 +82,7 @@ class SudokuBoard {
         }
     }
 
-    func placeNum(boxNum : Int, number : Int) -> Bool{
+    func placeNum(boxNum : Int, number : Int){
         let indexesOfBox = getIndexesOfBox(boxNum : boxNum)
         for _ in 1 ... 100 {
             let randomIndex = indexesOfBox[Int.random(in: 0 ..< indexesOfBox.count)]
@@ -91,6 +91,7 @@ class SudokuBoard {
                 break
             }
         }
+        return true 
     }
 
     //ABOVE IS LOGIC AND CODE TO MAKE A VALID SUDOKU BOARD
@@ -228,6 +229,8 @@ func removeNumberFromSudokuBoard(columnIndex:Int,rowIndex: Int) {
 
 func removeNumbers(numbersToRemove:Int) {
     //removes the numbers
+
+
     for _ in  1...numbersToRemove {
         //removes a number at a random box Index and cell index
         removeNumberFromSudokuBoard(columnIndex:(Int.random(in:0..<9)), rowIndex: Int.random(in: 0..<9))
