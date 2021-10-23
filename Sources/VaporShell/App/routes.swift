@@ -67,7 +67,9 @@ func routes(_ app: Application) throws {
         //use the filter function with cells.shadowboard to have a variable with the filtered code
         //////////////////////////////////
 
-        guard let filteredBoard = sudokuBoard.filter()
+        guard let filteredBoard = SudokuBoard.filter(filter:filter, solutionBoard: sudokuBoard.solutionBoard)
+
+
         
        //This return statement responds to the client with the completed board with the server's statusCode as "200 OK"
         return Response(status: .ok)

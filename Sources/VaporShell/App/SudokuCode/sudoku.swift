@@ -1,6 +1,6 @@
 class SudokuBoard {
-    var finalBoard : Board
-    var solutionBoard : Board
+    var finalBoard = Board()
+    var solutionBoard = Board()
     
     init(difficulty:String) {
         let boardArray = generateBoard(difficulty:difficulty)
@@ -148,7 +148,7 @@ class SudokuBoard {
         let boardArray = [finalBoard, solutionBoard]
         return boardArray
     }
-    
+    /*
     func printBoard() {
         
         let testBoard = generateBoard(difficulty:"hell")
@@ -160,14 +160,17 @@ class SudokuBoard {
             print()
         }
     }
+     */
 
     func changeValueInBoard(boxIndex: Int, cellIndex: Int, newValue: Int?){
         finalBoard.board[boxIndex].cells[cellIndex].value = newValue
     }
-    
+
+    /*
     func allBoardValues()  {
         print(printBoard())
-    } 
+    }
+     */
 
     func returnIncorrectBoard(playerBoard:Board, solutionBoard:Board) -> Board {
         var incorrectCellPositions = [Position]()
