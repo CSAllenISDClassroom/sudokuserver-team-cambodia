@@ -153,7 +153,7 @@ class SudokuBoard {
     func retrieveIncorrectBoardValues(playerBoard:[[Int]], solutionBoard:[[Int]]) -> [Int] {
         var incorrectValuesArray = [Int]()
         for box in 0 ..< playerBoard.count {
-            for cellIndex in 0 ..< box.count {
+            for cellIndex in 0 ..< playerBoard[box].count {
                 if playerBoard[box][cellIndex] != solutionBoard[box][cellIndex] {
                     incorrectValuesArray.append(cellIndex)    
                 }
@@ -187,9 +187,13 @@ class SudokuBoard {
     }
     
     func filter(filter:String, solutionBoard: Board , playerBoard: Board) {
-        var selectedFilter = filter
 
-        switch selectedFilter {
+<<<<<<< HEAD
+        switch filter {
+=======
+
+        switch filter {
+>>>>>>> 32fc624a5a93d8d07857fdc74149b3d8f01bddb5
         case "all":
             allBoardValues()
         case "repeated":
@@ -199,7 +203,7 @@ class SudokuBoard {
             print()
             //incorrectBoardValues()
         default:
-            selectedFilter = "all"
+            filter = "all"
 
         }
     }
