@@ -6,26 +6,28 @@ class SudokuBoard {
         public var row : Int
         public var column : Int
         public var box : Int
-        public var number : Int? 
+        public var number = 0
+        public var cell : Int
         
-        init(r: Int, c: Int, b: Int) {
+        init(r: Int, c: Int, b: Int, l : Int) {
             self.row = r
             self.column = c
             self.box = b
+            self.cell = l
         }
     }
 
-    var board = [s(r: 1, c: 1, b: 1), s(r: 1, c: 2, b: 1), s(r: 1, c: 3, b: 1), s(r: 1, c: 4, b: 2), s(r: 1, c: 5, b: 2), s(r: 1, c: 6, b: 2), s(r: 1, c: 7, b: 3), s(r: 1, c: 8, b: 3), s(r: 1, c: 9, b: 3),
-                 s(r: 2, c: 1, b: 1), s(r: 2, c: 2, b: 1), s(r: 2, c: 3, b: 1), s(r: 2, c: 4, b: 2), s(r: 2, c: 5, b: 2), s(r: 2, c: 6, b: 2), s(r: 2, c: 7, b: 3), s(r: 2, c: 8, b: 3), s(r: 2, c: 9, b: 3),
-                 s(r: 3, c: 1, b: 1), s(r: 3, c: 2, b: 1), s(r: 3, c: 3, b: 1), s(r: 3, c: 4, b: 2), s(r: 3, c: 5, b: 2), s(r: 3, c: 6, b: 2), s(r: 3, c: 7, b: 3), s(r: 3, c: 8, b: 3), s(r: 3, c: 9, b: 3),
+    var board = [s(r: 1, c: 1, b: 1, l: 1), s(r: 1, c: 2, b: 1, l: 2), s(r: 1, c: 3, b: 1, l: 3), s(r: 1, c: 4, b: 2, l: 1), s(r: 1, c: 5, b: 2, l: 2), s(r: 1, c: 6, b: 2, l: 3), s(r: 1, c: 7, b: 3, l: 1), s(r: 1, c: 8, b: 3, l: 2), s(r: 1, c: 9, b: 3, l: 3),
+                 s(r: 2, c: 1, b: 1, l: 4), s(r: 2, c: 2, b: 1, l: 5), s(r: 2, c: 3, b: 1, l: 6), s(r: 2, c: 4, b: 2, l: 4), s(r: 2, c: 5, b: 2, l: 5), s(r: 2, c: 6, b: 2, l: 6), s(r: 2, c: 7, b: 3, l: 4), s(r: 2, c: 8, b: 3, l: 5), s(r: 2, c: 9, b: 3, l: 6),
+                 s(r: 3, c: 1, b: 1, l: 7), s(r: 3, c: 2, b: 1, l: 8), s(r: 3, c: 3, b: 1, l: 9), s(r: 3, c: 4, b: 2, l: 7), s(r: 3, c: 5, b: 2, l: 8), s(r: 3, c: 6, b: 2, l: 9), s(r: 3, c: 7, b: 3, l: 7), s(r: 3, c: 8, b: 3, l: 8), s(r: 3, c: 9, b: 3, l: 9),
 
-                 s(r: 4, c: 1, b: 4), s(r: 4, c: 2, b: 4), s(r: 4, c: 3, b: 4), s(r: 4, c: 4, b: 5), s(r: 4, c: 5, b: 5), s(r: 4, c: 6, b: 5), s(r: 4, c: 7, b: 6), s(r: 4, c: 8, b: 6), s(r: 4, c: 9, b: 6),
-                 s(r: 5, c: 1, b: 4), s(r: 5, c: 2, b: 4), s(r: 5, c: 3, b: 4), s(r: 5, c: 4, b: 5), s(r: 5, c: 5, b: 5), s(r: 5, c: 6, b: 5), s(r: 5, c: 7, b: 6), s(r: 5, c: 8, b: 6), s(r: 5, c: 9, b: 6),
-                 s(r: 6, c: 1, b: 4), s(r: 6, c: 2, b: 4), s(r: 6, c: 3, b: 4), s(r: 6, c: 4, b: 5), s(r: 6, c: 5, b: 5), s(r: 6, c: 6, b: 5), s(r: 6, c: 7, b: 6), s(r: 6, c: 8, b: 6), s(r: 6, c: 9, b: 6),
+                 s(r: 4, c: 1, b: 4, l: 1), s(r: 4, c: 2, b: 4, l: 2), s(r: 4, c: 3, b: 4, l: 3), s(r: 4, c: 4, b: 5, l: 1), s(r: 4, c: 5, b: 5, l: 2), s(r: 4, c: 6, b: 5, l: 3), s(r: 4, c: 7, b: 6, l: 1), s(r: 4, c: 8, b: 6, l: 2), s(r: 4, c: 9, b: 6, l: 3),
+                 s(r: 5, c: 1, b: 4, l: 4), s(r: 5, c: 2, b: 4, l: 5), s(r: 5, c: 3, b: 4, l: 6), s(r: 5, c: 4, b: 5, l: 4), s(r: 5, c: 5, b: 5, l: 5), s(r: 5, c: 6, b: 5, l: 6), s(r: 5, c: 7, b: 6, l: 4), s(r: 5, c: 8, b: 6, l: 5), s(r: 5, c: 9, b: 6, l: 6),
+                 s(r: 6, c: 1, b: 4, l: 7), s(r: 6, c: 2, b: 4, l: 8), s(r: 6, c: 3, b: 4, l: 9), s(r: 6, c: 4, b: 5, l: 7), s(r: 6, c: 5, b: 5, l: 8), s(r: 6, c: 6, b: 5, l: 9), s(r: 6, c: 7, b: 6, l: 7), s(r: 6, c: 8, b: 6, l: 8), s(r: 6, c: 9, b: 6, l: 9),
 
-                 s(r: 7, c: 1, b: 7), s(r: 7, c: 2, b: 7), s(r: 7, c: 3, b: 7), s(r: 7, c: 4, b: 8), s(r: 7, c: 5, b: 8), s(r: 7, c: 6, b: 8), s(r: 7, c: 7, b: 9), s(r: 7, c: 8, b: 9), s(r: 7, c: 9, b: 9),
-                 s(r: 8, c: 1, b: 7), s(r: 8, c: 2, b: 7), s(r: 8, c: 3, b: 7), s(r: 8, c: 4, b: 8), s(r: 8, c: 5, b: 8), s(r: 8, c: 6, b: 8), s(r: 8, c: 7, b: 9), s(r: 8, c: 8, b: 9), s(r: 8, c: 9, b: 9),
-                 s(r: 9, c: 1, b: 7), s(r: 9, c: 2, b: 7), s(r: 9, c: 3, b: 7), s(r: 9, c: 4, b: 8), s(r: 9, c: 5, b: 8), s(r: 9, c: 6, b: 8), s(r: 9, c: 7, b: 9), s(r: 9, c: 8, b: 9), s(r: 9, c: 9, b: 9)
+                 s(r: 7, c: 1, b: 7, l: 1), s(r: 7, c: 2, b: 7, l: 2), s(r: 7, c: 3, b: 7, l: 3), s(r: 7, c: 4, b: 8, l: 1), s(r: 7, c: 5, b: 8, l: 2), s(r: 7, c: 6, b: 8, l: 3), s(r: 7, c: 7, b: 9, l: 1), s(r: 7, c: 8, b: 9, l: 2), s(r: 7, c: 9, b: 9, l: 3),
+                 s(r: 8, c: 1, b: 7, l: 4), s(r: 8, c: 2, b: 7, l: 5), s(r: 8, c: 3, b: 7, l: 6), s(r: 8, c: 4, b: 8, l: 4), s(r: 8, c: 5, b: 8, l: 5), s(r: 8, c: 6, b: 8, l: 6), s(r: 8, c: 7, b: 9, l: 4), s(r: 8, c: 8, b: 9, l: 5), s(r: 8, c: 9, b: 9, l: 6),
+                 s(r: 9, c: 1, b: 7, l: 7), s(r: 9, c: 2, b: 7, l: 8), s(r: 9, c: 3, b: 7, l: 9), s(r: 9, c: 4, b: 8, l: 7), s(r: 9, c: 5, b: 8, l: 8), s(r: 9, c: 6, b: 8, l: 9), s(r: 9, c: 7, b: 9, l: 7), s(r: 9, c: 8, b: 9, l: 8), s(r: 9, c: 9, b: 9, l: 9)
     ]
 
     func returnBoard() -> [s] {
@@ -105,11 +107,11 @@ class SudokuBoard {
 
     struct Cell: Codable {
         let position: Position
-        let value: Int?
+        var value: Int?
     }
 
     struct Box: Codable {
-        let cells: [Cell]
+        var cells: [Cell]
 
         init(boxIndex: Int) {
             var cells = [Cell]()
@@ -121,7 +123,7 @@ class SudokuBoard {
     }
 
     struct Board: Codable {
-        let board: [Box]
+        var board: [Box]
 
         init() {
             var board = [Box]()
@@ -133,17 +135,17 @@ class SudokuBoard {
     }
 
    
-    func generateBoard() -> [[Int]] {
+    func generateBoard() -> Board {
         var isComplete = false
         var numsZero = 0
 
         while !isComplete {
             for box in 1 ... 9 {
                 for num in 1 ... 9 {
-                    let _ = placeNum(boxNum : box, number : num)
+                    placeNum(boxNum : box, number : num)
                 }
             }
-
+            
             for square in board {
                 if square.number == 0 {
                     numsZero += 1
@@ -160,53 +162,27 @@ class SudokuBoard {
             }
         }
 
-        //turn it into a 2d array
-        var twoDBoard = [[Int]]()
-        for s in 0 ..< board.count {
-            for box in 0 ..< 9 {
-                let emptyArray = [Int]()
-                twoDBoard.append(emptyArray)
-                if s/9 == box {
-                    //twoDBoard[box].append(board[s].number)
-                }
-            }
-        }
-        return twoDBoard 
+        //at this point, board is complete and generated
+
+        var finalBoard = Board()
+
+        for i in 0 ... 80 {
+            finalBoard.board[board[i].box - 1].cells[board[i].cell - 1].value = board[i].number
+         }
+
+        return finalBoard
     }
 
-    func printBoard() -> String {
-        let testBoard = generateBoard()
-        //  print(testBoard)
-        var board = ""
-        for boxes in 0 ..< 3 {
-            for boxIndex in 0 ..< 3 {
-                for cellIndex in 0 ..< 3 {
-                    board.append(("\(testBoard[boxIndex][cellIndex + (boxes * 3)])"))
-                }
-                print()
-            }
-            board += "\n"
-        }
+    func printBoard(){
+        
+            let testBoard = generateBoard()
 
-        for boxes in 0 ..< 3 {
-            for boxIndex in 3 ..< 6 {
-                for cellIndex in 0 ..< 3 {
-                    board.append("\(testBoard[boxIndex][cellIndex + (boxes * 3)])")
-                }
-                print()
+        for box in 0 ... 8 {
+            for cell in 0 ... 8 {
+                print(testBoard.board[box].cells[cell].value, terminator: "")
             }
-            board += "\n"
+            print()
         }
-
-        for boxes in 0 ..< 3 {
-            for boxIndex in 6 ..< 9 {
-                for cellIndex in 0 ..< 3 {
-                    board.append("\(testBoard[boxIndex][cellIndex + (boxes * 3)])")
-                }
-            }
-            board += "\n"
-        }
-        return board
     }
 
     func allBoardValues()  {
