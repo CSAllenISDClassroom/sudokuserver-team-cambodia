@@ -82,7 +82,7 @@ class SudokuBoard {
         }
     }
 
-    func placeNum(boxNum : Int, number : Int) -> Bool{
+    func placeNum(boxNum : Int, number : Int){
         let indexesOfBox = getIndexesOfBox(boxNum : boxNum)
         for _ in 1 ... 100 {
             let randomIndex = indexesOfBox[Int.random(in: 0 ..< indexesOfBox.count)]
