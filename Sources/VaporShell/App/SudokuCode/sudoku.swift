@@ -189,7 +189,7 @@ class SudokuBoard {
     func filter(filter:String, solutionBoard: Board , playerBoard: Board) {
         var selectedFilter = filter
 
-        switch selectedfilter {
+        switch selectedFilter {
         case "all":
             allBoardValues()
         case "repeated":
