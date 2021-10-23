@@ -96,8 +96,6 @@ func routes(_ app: Application) throws {
         if intCellIndex > 8 || intCellIndex < 0 {
             throw Abort(.badRequest, reason: "cellIndex is out of range 0 ... 8")
         }
-
-        let jsonDecoder = JSONDecoder()
         
         struct CellValue: Decodable {
             let value: Int?
@@ -110,7 +108,8 @@ func routes(_ app: Application) throws {
              throw Abort(.badRequest, reason: "value is out of range 1 ... 9 or null")
         }
         
-        
+        cells.playerBoard = cells.playerBoard.changeValueInBoard(boxIndex: Int(boxIndex)!, cellIndex: Int(cellIndex)!, newValue: cellValue.value, board: cells.playerBoard)
+
         //This return statement communicates to the client whether or not their requested value has been placed in the boxIndex and cellIndex
         return Response(status: .ok, body :"")
     }

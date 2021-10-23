@@ -146,7 +146,7 @@ class SudokuBoard {
         }
     }
 
-    func changeValueInBoard(boxIndex: Int, cellIndex: Int, newValue: Int, board: Board) -> Board {
+    func changeValueInBoard(boxIndex: Int, cellIndex: Int, newValue: Int?, board: SudokuBoard) -> SudokuBoard {
         var newBoard = board
         newBoard.board[boxIndex].cells[cellIndex].value = newValue
         return newBoard
