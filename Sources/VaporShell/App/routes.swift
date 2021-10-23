@@ -9,6 +9,9 @@ class Game {
     var shadowBoard : SudokuBoard
 
     init(difficulty: String) {
+        ////////////////////
+        //do the stuff in comments
+        ////////////////////
         playerBoard = SudokuBoard() //add difficulty parameter later
         shadowBoard = playerBoard //playerBoard.setDifficulty(difficulty: difficulty) 
     }
@@ -63,6 +66,10 @@ func routes(_ app: Application) throws {
         if filter != "all" && filter != "repeated" && filter != "incorrect" {
             throw Abort(.badRequest, reason: "invalid filter")
         }
+
+        //////////////////////////////////
+        //use the filter function with cells.shadowboard to have a variable with the filtered code
+        //////////////////////////////////
         
        //This return statement responds to the client with the completed board with the server's statusCode as "200 OK"
         return Response(status: .ok)
@@ -108,7 +115,7 @@ func routes(_ app: Application) throws {
              throw Abort(.badRequest, reason: "value is out of range 1 ... 9 or null")
         }
         
-        cells.playerBoard = cells.playerBoard.changeValueInBoard(boxIndex: Int(boxIndex)!, cellIndex: Int(cellIndex)!, newValue: cellValue.value, board: cells.playerBoard)
+        cells.playerBoard = cells.playerBoard.changeValueInBoard(boxIndex: Int(boxIndex)!, cellIndex: Int(cellIndex)!, newValue: cellValue.value, board: cells)
 
         //This return statement communicates to the client whether or not their requested value has been placed in the boxIndex and cellIndex
         return Response(status: .ok, body :"")
