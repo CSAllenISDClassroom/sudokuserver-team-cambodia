@@ -37,7 +37,7 @@ func routes(_ app: Application) throws {
 
         //makes variables for the game
         let game = Game(difficulty: difficulty) //am i allowed to bang here? dont laugh
-        let id = latestBoardID.updateBoardID() //check if this works
+        let id = latestBoardID.updateBoardID() //check if this works 
         
         sudokuIDs[id] = game
 
@@ -66,6 +66,8 @@ func routes(_ app: Application) throws {
         //////////////////////////////////
         //use the filter function with cells.shadowboard to have a variable with the filtered code
         //////////////////////////////////
+
+        guard let filteredBoard = sudokuBoard.filter()
         
        //This return statement responds to the client with the completed board with the server's statusCode as "200 OK"
         return Response(status: .ok)

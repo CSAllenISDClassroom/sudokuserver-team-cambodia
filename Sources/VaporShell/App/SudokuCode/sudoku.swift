@@ -268,18 +268,18 @@ class SudokuBoard {
         return repeatedValuesBoard
     }
     
-    func filter(filter:String, solutionBoard: Board , playerBoard: Board) -> Board {
+    func filter(filter:String, solutionBoard: Board) -> Board {
         var boardToBeReturned = Board()
         
         switch filter {
             
         case "all":
-            boardToBeReturned = playerBoard
+            boardToBeReturned = finalBoard
         case "repeated":
-            boardToBeReturned = returnRepeatedBoard(playerBoard: playerBoard, solutionBoard: solutionBoard)
+            boardToBeReturned = returnRepeatedBoard(playerBoard: finalBoard, solutionBoard: solutionBoard)
         case "incorrect":
             
-            boardToBeReturned = returnIncorrectBoard(playerBoard: playerBoard, solutionBoard: solutionBoard)
+            boardToBeReturned = returnIncorrectBoard(playerBoard: finalBoard, solutionBoard: solutionBoard)
         default:
             print("Something went wrong with the filter function switch statement")
             
@@ -288,25 +288,25 @@ class SudokuBoard {
     }
 }
 
-func removeNumberFromSudokuBoard(columnIndex:Int,rowIndex: Int) {
+func removeNumberFromSudokuBoard(columnIndex:Int,rowIndex: Int, difficulty: String) {
     //sodoku.board is the board made up of s classes
-    for i in 0 ..< SudokuBoard().returnBoard().count {
-        if SudokuBoard().returnBoard()[i].column == columnIndex && SudokuBoard().returnBoard()[i].row == rowIndex  {
+    for i in 0 ..< SudokuBoard(difficulty:difficulty).returnBoard().count {
+        if SudokuBoard(difficulty:difficulty).returnBoard()[i].column == columnIndex && SudokuBoard(difficulty:difficulty).returnBoard()[i].row == rowIndex  {
 
-            SudokuBoard().returnBoard()[i].number = nil
+            SudokuBoard(difficulty:difficulty).returnBoard()[i].number = nil
 
         }
     }
 
 }
 
-func removeNumbers(numbersToRemove:Int) {
+func removeNumbers(numbersToRemove:Int, difficulty:String) {
     //removes the numbers
 
 
     for _ in  1...numbersToRemove {
         //removes a number at a random box Index and cell index
-        removeNumberFromSudokuBoard(columnIndex:(Int.random(in:0..<9)), rowIndex: Int.random(in: 0..<9))
+        removeNumberFromSudokuBoard(columnIndex:(Int.random(in:0..<9)), rowIndex: Int.random(in: 0..<9), difficulty:difficulty)
 
     }
 
@@ -315,16 +315,16 @@ func removeNumbers(numbersToRemove:Int) {
 func setDifficulty(difficulty: String) {
 
     if difficulty == "easy" {
-        removeNumbers(numbersToRemove: 5)
+        removeNumbers(numbersToRemove: 5, difficulty:difficulty)
     }
     if difficulty == "medium" {
-        removeNumbers(numbersToRemove: 10)
+        removeNumbers(numbersToRemove: 10, difficulty:difficulty)
     }
     if difficulty == "hard" {
-        removeNumbers(numbersToRemove: 15)
+        removeNumbers(numbersToRemove: 15, difficulty:difficulty)
     }
     if difficulty == "hell" {
-        removeNumbers(numbersToRemove: 20)
+        removeNumbers(numbersToRemove: 20, difficulty:difficulty)
     }
 
 
