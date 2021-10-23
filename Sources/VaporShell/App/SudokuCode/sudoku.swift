@@ -153,7 +153,7 @@ class SudokuBoard {
     func retrieveIncorrectBoardValues(playerBoard:[[Int]], solutionBoard:[[Int]]) -> [Int] {
         var incorrectValuesArray = [Int]()
         for box in 0 ..< playerBoard.count {
-            for cellIndex in 0 ..< box.count {
+            for cellIndex in 0 ..< playerBoard[box].count {
                 if playerBoard[box][cellIndex] != solutionBoard[box][cellIndex] {
                     incorrectValuesArray.append(cellIndex)    
                 }
