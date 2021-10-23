@@ -1,14 +1,11 @@
-import Foundation 
-
 class SudokuBoard {
 
     class s{
         public var row : Int
         public var column : Int
         public var box : Int
-        public var number = 0
+        public var number : Int? = 0
         public var cell : Int
-        
         init(r: Int, c: Int, b: Int, l : Int) {
             self.row = r
             self.column = c
@@ -33,7 +30,6 @@ class SudokuBoard {
     func returnBoard() -> [s] {
         return board
     }
-    
     func checkRow(rowNum: Int, number: Int) -> Bool{
 
         for square in board {
@@ -86,7 +82,7 @@ class SudokuBoard {
         }
     }
 
-    func placeNum(boxNum : Int, number : Int){
+    func placeNum(boxNum : Int, number : Int) -> Bool{
         let indexesOfBox = getIndexesOfBox(boxNum : boxNum)
         for _ in 1 ... 100 {
             let randomIndex = indexesOfBox[Int.random(in: 0 ..< indexesOfBox.count)]
@@ -134,7 +130,7 @@ class SudokuBoard {
         }
     }
 
-   
+    
     func generateBoard() -> Board {
         var isComplete = false
         var numsZero = 0
@@ -162,20 +158,20 @@ class SudokuBoard {
             }
         }
 
-        //at this point, board is complete and generated
 
+        //at this point, board is complete and generated
         var finalBoard = Board()
 
         for i in 0 ... 80 {
             finalBoard.board[board[i].box - 1].cells[board[i].cell - 1].value = board[i].number
-         }
+        }
 
         return finalBoard
     }
 
-    func printBoard(){
+    func printBoard() {
         
-            let testBoard = generateBoard()
+        let testBoard = generateBoard()
 
         for box in 0 ... 8 {
             for cell in 0 ... 8 {
@@ -189,38 +185,45 @@ class SudokuBoard {
         print(printBoard())
     } 
 
-    func repeatedBoardValues(playerBoard:[[Int]], solutionBoard:[[Int]]) {
-        // var repeatedValuesArray : [[Int]]
-        // for boxes in playerBoard {
-        //     for boxIndex in playerBoard {
-        //         for cellIndex in playerBoard {
-        //             //array.append(cellIndex)
-        //         }
-        //         print()
-        //     }
-        // }
-        
-    }
-    
-    func incorrectBoardValues(playerBoard:[[Int]], solutionBoard:[[Int]]) { //-> [Int] {
-        // var incorrectValuesArray = [Int]()
-        // for box in 0 ..< playerBoard.count {
-        //     for cellIndex in 0 ..< box.count {
-        //         if playerBoard[box][cellIndex] != solutionBoard[box][cellIndex] {
-        //             incorrectValuesArray.append(cellIndex)    
-        //         }
-        //     }
-        
-        // }
-        // return incorrectValuesArray
-
+    func retrieveIncorrectBoardValues(playerBoard:[[Int]], solutionBoard:[[Int]]) -> [Int] {
+        var incorrectValuesArray = [Int]()
+        for box in 0 ..< playerBoard.count {
+            for cellIndex in 0 ..< box.count {
+                if playerBoard[box][cellIndex] != solutionBoard[box][cellIndex] {
+                    incorrectValuesArray.append(cellIndex)    
+                }
+            }
+            
+        }
+        return incorrectValuesArray
     }
 
+    func retrieveRepeatedBoardValues(playerBoard:[[Int]], solutionBoard:[[Int]]) -> [Int] {
+        var repeatedValuesArray = [Int]()
+        
+        /*
 
+         for box in board {  
+         for number in box {
+         for numberToBeChecked in box {
+         if number == numberToBeChecked {
+         FLAG (append to an array?)
+
+         */
+        for box in board {
+            for number in box {
+                for numberToBeChecked in box {
+                    if number == numberToBeChecked {
+                        repeatedValuesArray.append(board[number][numberToBeChecked])
+                    }
+                }
+            }
+        }
+    }
     func filter(filter:String) {
         var selectedFilter = filter
 
-        switch selectedFilter {
+        switch selectedfilter {
         case "all":
             allBoardValues()
         case "repeated":
@@ -235,11 +238,6 @@ class SudokuBoard {
         }
     }
 }
-
-////////////////////////////
-//difficulty
-////////////////////////////
-
 func removeNumberFromSudokuBoard(columnIndex:Int,rowIndex: Int) {
     //sodoku.board is the board made up of s classes
     for i in 0 ..< SudokuBoard().returnBoard().count {
