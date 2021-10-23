@@ -91,7 +91,6 @@ class SudokuBoard {
                 break
             }
         }
-        return true 
     }
 
     //ABOVE IS LOGIC AND CODE TO MAKE A VALID SUDOKU BOARD
@@ -147,8 +146,8 @@ class SudokuBoard {
         }
     }
 
-    func changeValueInBoard(boxIndex: Int, cellIndex: Int, newValue: Int?, board: SudokuBoard) -> SudokuBoard {
-        var newBoard = board
+    func changeValueInBoard(boxIndex: Int, cellIndex: Int, newValue: Int?, board: Game) -> SudokuBoard {
+        var newBoard = board.playerBoard
         newBoard.board[boxIndex].cells[cellIndex].value = newValue
         return newBoard
     }
