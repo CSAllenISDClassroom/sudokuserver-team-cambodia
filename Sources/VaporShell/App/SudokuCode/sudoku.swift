@@ -271,7 +271,7 @@ class SudokuBoard {
         return repeatedValuesBoard
     }
     
-    func filter(filter:String, solutionBoard: Board) -> Board {
+    func filter(filter:String, solutionBoard: Board) -> Board? {
         var boardToBeReturned = Board()
         
         switch filter {

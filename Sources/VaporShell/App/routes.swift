@@ -7,7 +7,7 @@ struct ID : Content {
 class Game {
     var sudokuBoard : SudokuBoard
     
-    init(difficulty: String) {
+        init(difficulty: String) {
         let newSudokuBoard = SudokuBoard(difficulty:difficulty)
         self.sudokuBoard = newSudokuBoard
     }
@@ -67,9 +67,9 @@ func routes(_ app: Application) throws {
         //use the filter function with cells.shadowboard to have a variable with the filtered code
         //////////////////////////////////
 
-        guard let filteredBoard = SudokuBoard.filter(filter:filter, solutionBoard: sudokuBoard.solutionBoard)
+        let filteredBoard = cells.sudokuBoard.filter(filter:filter, solutionBoard: cells.sudokuBoard.solutionBoard)
 
-
+        print(filteredBoard!)
         
        //This return statement responds to the client with the completed board with the server's statusCode as "200 OK"
         return Response(status: .ok)
