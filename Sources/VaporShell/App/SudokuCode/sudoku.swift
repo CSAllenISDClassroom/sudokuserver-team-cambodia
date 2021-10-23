@@ -180,28 +180,47 @@ class SudokuBoard {
         return incorrectPositionsBoard
     }
 
-    func retrieveRepeatedBoardValues(playerBoard:[[Int]], solutionBoard:[[Int]]) -> [Int] {
-        // var repeatedValuesArray = [Int]()
+    func returnRepeatedBoard(playerBoard: Board, solutionBoard: Board) -> Board {
+        var repeatedValuesBoard = Board()
         
-        // /*
+        /*
 
-        //  for box in board {  
-        //  for number in box {
-        //  for numberToBeChecked in box {
-        //  if number == numberToBeChecked {
-        //  FLAG (append to an array?)
+         for box in board {  
+         for number in box {
+         for numberToBeChecked in box {
+         if number == numberToBeChecked {
+         FLAG (append to an array?)
 
-        //  */
-        // for box in board {
-        //     for number in box {
-        //         for numberToBeChecked in box {
-        //             if number == numberToBeChecked {
-        //                 repeatedValuesArray.append(board[number][numberToBeChecked])
-        //             }
-        //         }
-        //     }
-        // }
-        return []
+         */
+        for boxIndex in 0..<playerBoard.board.count {
+            for cellIndex in 0..<playerBoard.board[boxIndex].cells.count {
+                for numberToBeChecked in 0..<boxIndex {
+                    if cellIndex == numberToBeChecked {
+                        repeatedValuesArray.append(board[number][numberToBeChecked])
+                    }
+                }
+            }
+        }
+        func checkRows() {
+            
+        }
+        
+        func checkBoxes() {
+            for boxIndex in 0..<playerBoard.board.count {
+                for cellIndex in 0..<playerBoard.board[boxIndex].cells.count {
+                    for checkIndex in 0..<playerBoard.board[boxIndex].cells.count {
+                        if checkIndex != cellIndex {
+                            if playerBoard.board[boxIndex].cells[cellIndex].value == playerBoard.board[boxIndex].cells[checkIndex].value {
+                                repeatedValuesBoard.board[boxIndex].cells[cellIndex].value = playerBoard.board[boxIndex].cells[cellIndex].value
+                                repeatedValuesBoard.board[boxIndex].cells[checkIndex].value = playerBoard.board[boxIndex].cells[checkIndex].value
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        return repeatedValuesBoard
     }
     
     func filter(filter:String, solutionBoard: Board , playerBoard: Board) -> Board {
