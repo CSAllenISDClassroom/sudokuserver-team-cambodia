@@ -146,6 +146,12 @@ class SudokuBoard {
         }
     }
 
+    func changeValueInBoard(boxIndex: Int, cellIndex: Int, newValue: Int, board: Board) -> Board {
+        var newBoard = board
+        newBoard.board[boxIndex].cells[cellIndex].value = newValue
+        return newBoard
+    }
+    
     func allBoardValues()  {
         print(printBoard())
     } 
@@ -164,34 +170,35 @@ class SudokuBoard {
     }
 
     func retrieveRepeatedBoardValues(playerBoard:[[Int]], solutionBoard:[[Int]]) -> [Int] {
-        var repeatedValuesArray = [Int]()
+        // var repeatedValuesArray = [Int]()
         
-        /*
+        // /*
 
-         for box in board {  
-         for number in box {
-         for numberToBeChecked in box {
-         if number == numberToBeChecked {
-         FLAG (append to an array?)
+        //  for box in board {  
+        //  for number in box {
+        //  for numberToBeChecked in box {
+        //  if number == numberToBeChecked {
+        //  FLAG (append to an array?)
 
-         */
-        for box in board {
-            for number in box {
-                for numberToBeChecked in box {
-                    if number == numberToBeChecked {
-                        repeatedValuesArray.append(board[number][numberToBeChecked])
-                    }
-                }
-            }
-        }
+        //  */
+        // for box in board {
+        //     for number in box {
+        //         for numberToBeChecked in box {
+        //             if number == numberToBeChecked {
+        //                 repeatedValuesArray.append(board[number][numberToBeChecked])
+        //             }
+        //         }
+        //     }
+        // }
+        return []
     }
     
-    func filter(filter:String, solutionBoard: Board , playerBoard: Board) {
-
-
+    func filter(filter:String, solutionBoard: Board , playerBoard: Board) -> Board{
+        var boardToBeReturned = Board()
+        
         switch filter {
         case "all":
-            allBoardValues()
+            boardToBeReturned = playerBoard
         case "repeated":
             print()
             //repeatedBoardValues()
@@ -199,10 +206,12 @@ class SudokuBoard {
             print()
             //incorrectBoardValues()
         default:
-            filter = "all"
+            print("Something went wrong with the filter function switch statement")
 
         }
+        return boardToBeReturned
     }
+
 }
 func removeNumberFromSudokuBoard(columnIndex:Int,rowIndex: Int) {
     //sodoku.board is the board made up of s classes
