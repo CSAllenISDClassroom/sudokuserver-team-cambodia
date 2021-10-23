@@ -183,33 +183,55 @@ class SudokuBoard {
     func returnRepeatedBoard(playerBoard: Board, solutionBoard: Board) -> Board {
         var repeatedValuesBoard = Board()
         
-        /*
-
-         for box in board {  
-         for number in box {
-         for numberToBeChecked in box {
-         if number == numberToBeChecked {
-         FLAG (append to an array?)
-
-         */
-        for boxIndex in 0..<playerBoard.board.count {
-            for cellIndex in 0..<playerBoard.board[boxIndex].cells.count {
-                for numberToBeChecked in 0..<boxIndex {
-                    if cellIndex == numberToBeChecked {
-                        repeatedValuesArray.append(board[number][numberToBeChecked])
-                    }
-                }
-            }
-        }
         func checkRows() {
             for i in 0..<3 {
                 for boxes in 0..<3 {
-                    for cellIndex in 0..<3 {
-                        
+                    for boxIndex in (0 + (i*3))..<(3 + (i*3)) {
+                        let trueBoxIndex = boxIndex + (i*3)
+                        for cellIndex in 0..<3 {
+                            let trueCellIndex = cellIndex + (boxes * 3)
+                            
+                            for checkIndex in 0 ..< 3 {
+                                let trueCheckIndex = checkIndex + (boxes * 3)
+
+                                if trueCheckIndex != trueCellIndex {
+                                    if playerBoard.board[trueBoxIndex].cells[trueCellIndex].value == playerBoard.board[trueBoxIndex].cells[trueCheckIndex].value {
+                                        repeatedValuesBoard.board[trueBoxIndex].cells[trueCellIndex].value = playerBoard.board[trueBoxIndex].cells[cellIndex].value
+                                        repeatedValuesBoard.board[trueBoxIndex].cells[trueCheckIndex].value = playerBoard.board[trueBoxIndex].cells[trueCheckIndex].value
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
+
+        func checkColumns() {
+            for _ in 0..<3 {
+                for _ in 0..<3 {
+                    for boxIndex in 0..<3 {
+                        let trueBoxIndex = boxIndex + (boxIndex * 3)
+                        
+                        for cellIndex in 0..<3 {
+                            let trueCellIndex = cellIndex + (cellIndex * 3)
+                            
+                            for checkIndex in 0 ..< 3 {
+                                let trueCheckIndex = checkIndex+(checkIndex*3)
+
+                                if trueCheckIndex != trueCellIndex {
+                                    if playerBoard.board[trueBoxIndex].cells[trueCellIndex].value == playerBoard.board[trueBoxIndex].cells[trueCheckIndex].value {
+                                        repeatedValuesBoard.board[trueBoxIndex].cells[trueCellIndex].value = playerBoard.board[trueBoxIndex].cells[cellIndex].value
+                                        repeatedValuesBoard.board[trueBoxIndex].cells[trueCheckIndex].value = playerBoard.board[trueBoxIndex].cells[trueCheckIndex].value
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         
         func checkBoxes() {
             for boxIndex in 0..<playerBoard.board.count {
@@ -225,6 +247,10 @@ class SudokuBoard {
                 }
             }
         }
+
+        checkRows()
+        checkColumns()
+        checkBoxes()
         
         return repeatedValuesBoard
     }
@@ -237,8 +263,7 @@ class SudokuBoard {
         case "all":
             boardToBeReturned = playerBoard
         case "repeated":
-            print()
-            //repeatedBoardValues()
+            boardToBeReturned = returnRepeatedBoard(playerBoard: playerBoard, solutionBoard: solutionBoard)
         case "incorrect":
             
             boardToBeReturned = returnIncorrectBoard(playerBoard: playerBoard, solutionBoard: solutionBoard)
