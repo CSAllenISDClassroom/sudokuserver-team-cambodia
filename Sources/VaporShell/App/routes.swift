@@ -5,15 +5,11 @@ struct ID : Content {
 }
 
 class Game {
-    var playerBoard : SudokuBoard
-    var shadowBoard : SudokuBoard
-
+    var sudokuBoard : SudokuBoard
+    
     init(difficulty: String) {
-        ////////////////////
-        //do the stuff in comments
-        ////////////////////
-        playerBoard = SudokuBoard() //add difficulty parameter later
-        shadowBoard = playerBoard //playerBoard.setDifficulty(difficulty: difficulty) 
+        let newSudokuBoard = SudokuBoard(difficulty:difficulty)
+        self.sudokuBoard = newSudokuBoard
     }
 }
 
@@ -115,7 +111,7 @@ func routes(_ app: Application) throws {
              throw Abort(.badRequest, reason: "value is out of range 1 ... 9 or null")
         }
         
-        cells.playerBoard = cells.playerBoard.changeValueInBoard(boxIndex: Int(boxIndex)!, cellIndex: Int(cellIndex)!, newValue: cellValue.value, board: cells)
+        cells.sudokuBoard.changeValueInBoard(boxIndex: Int(boxIndex)!, cellIndex: Int(cellIndex)!, newValue: cellValue.value)
 
         //This return statement communicates to the client whether or not their requested value has been placed in the boxIndex and cellIndex
         return Response(status: .ok, body :"")

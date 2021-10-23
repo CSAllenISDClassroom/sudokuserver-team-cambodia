@@ -1,5 +1,13 @@
 class SudokuBoard {
-
+    var finalBoard : Board
+    var solutionBoard : Board
+    
+    init(difficulty:String) {
+        let boardArray = generateBoard(difficulty:difficulty)
+        self.finalBoard = boardArray[0]
+        self.solutionBoard = boardArray[1]
+    }
+    
     class s{
         public var row : Int
         public var column : Int
@@ -96,7 +104,7 @@ class SudokuBoard {
     //ABOVE IS LOGIC AND CODE TO MAKE A VALID SUDOKU BOARD
     //BELOW IS PROPER FORMATTING
     
-    func generateBoard() -> Board {
+    func generateBoard(difficulty:String) -> [Board] {
         var isComplete = false
         var numsZero = 0
 
@@ -123,7 +131,13 @@ class SudokuBoard {
             }
         }
 
+        var solutionBoard = Board()
+        for i in 0 ... 80 {
+            solutionBoard.board[board[i].box - 1].cells[board[i].cell - 1].value = board[i].number
+        }
 
+        setDifficulty(difficulty:difficulty)
+        
         //at this point, board is complete and generated
         var finalBoard = Board()
 
@@ -131,12 +145,13 @@ class SudokuBoard {
             finalBoard.board[board[i].box - 1].cells[board[i].cell - 1].value = board[i].number
         }
 
-        return finalBoard
+        let boardArray = [finalBoard, solutionBoard]
+        return boardArray
     }
-
+    
     func printBoard() {
         
-        let testBoard = generateBoard()
+        let testBoard = generateBoard(difficulty:"hell")
 
         for box in 0 ... 8 {
             for cell in 0 ... 8 {
@@ -146,10 +161,8 @@ class SudokuBoard {
         }
     }
 
-    func changeValueInBoard(boxIndex: Int, cellIndex: Int, newValue: Int?, board: Board) -> Board {
-        var newBoard = board
-        newBoard.board[boxIndex].cells[cellIndex].value = newValue
-        return newBoard
+    func changeValueInBoard(boxIndex: Int, cellIndex: Int, newValue: Int?){
+        finalBoard.board[boxIndex].cells[cellIndex].value = newValue
     }
     
     func allBoardValues()  {
