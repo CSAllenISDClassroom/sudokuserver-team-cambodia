@@ -156,7 +156,7 @@ class SudokuBoard {
         print(printBoard())
     } 
 
-    func retrieveIncorrectBoardValues(playerBoard:Board, solutionBoard:Board) -> Board {
+    func returnIncorrectBoard(playerBoard:Board, solutionBoard:Board) -> Board {
         var incorrectCellPositions = [Position]()
         for boxIndex in 0 ..< playerBoard.board.count {
             for cellIndex in 0 ..< playerBoard.board[boxIndex].cells.count {
@@ -164,7 +164,6 @@ class SudokuBoard {
                     incorrectCellPositions.append(playerBoard.board[boxIndex].cells[cellIndex].position)    
                 }
             }
-            
         }
 
         var incorrectPositionsBoard = Board()
@@ -172,13 +171,13 @@ class SudokuBoard {
         for boxIndex in 0 ..< playerBoard.board.count {
             for cellIndex in 0 ..< playerBoard.board[boxIndex].cells.count {
                 for position in incorrectCellPositions {
-                    if playerBoard.board[boxIndex].cells[cellIndex].position.cellIndex == position.cellIndex {
-                        incorrect
+                    if cellIndex == position.cellIndex && boxIndex == position.boxIndex {
+                        incorrectPositionsBoard.board[boxIndex].cells[cellIndex].value = playerBoard.board[boxIndex].cells[cellIndex].value
                     }
                 }
             }
         }
-        return incorrectValuesArray
+        return incorrectPositionsBoard
     }
 
     func retrieveRepeatedBoardValues(playerBoard:[[Int]], solutionBoard:[[Int]]) -> [Int] {
@@ -205,27 +204,27 @@ class SudokuBoard {
         return []
     }
     
-    func filter(filter:String, solutionBoard: Board , playerBoard: Board) -> Board{
+    func filter(filter:String, solutionBoard: Board , playerBoard: Board) -> Board {
         var boardToBeReturned = Board()
         
         switch filter {
-
+            
         case "all":
             boardToBeReturned = playerBoard
         case "repeated":
             print()
             //repeatedBoardValues()
         case "incorrect":
-            print()
-            //incorrectBoardValues()
+            
+            boardToBeReturned = returnIncorrectBoard(playerBoard: playerBoard, solutionBoard: solutionBoard)
         default:
             print("Something went wrong with the filter function switch statement")
-
+            
         }
         return boardToBeReturned
     }
-
 }
+
 func removeNumberFromSudokuBoard(columnIndex:Int,rowIndex: Int) {
     //sodoku.board is the board made up of s classes
     for i in 0 ..< SudokuBoard().returnBoard().count {
