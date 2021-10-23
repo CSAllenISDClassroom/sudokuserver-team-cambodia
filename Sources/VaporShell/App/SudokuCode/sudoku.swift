@@ -197,6 +197,7 @@ class SudokuBoard {
         var boardToBeReturned = Board()
         
         switch filter {
+
         case "all":
             boardToBeReturned = playerBoard
         case "repeated":
