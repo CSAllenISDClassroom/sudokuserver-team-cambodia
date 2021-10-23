@@ -115,7 +115,7 @@ class SudokuBoard {
 
             if numsZero == 0 {
                 isComplete = true
-            } else {
+           } else {
                 numsZero = 0
                 for num in 1 ... 9 {
                     removeNum(number: num)
@@ -140,14 +140,14 @@ class SudokuBoard {
 
         for box in 0 ... 8 {
             for cell in 0 ... 8 {
-                print(testBoard.board[box].cells[cell].value, terminator: "")
+                print((testBoard.board[box].cells[cell].value)!, terminator: "")
             }
             print()
         }
     }
 
-    func changeValueInBoard(boxIndex: Int, cellIndex: Int, newValue: Int?, board: Game) -> SudokuBoard {
-        var newBoard = board.playerBoard
+    func changeValueInBoard(boxIndex: Int, cellIndex: Int, newValue: Int?, board: Board) -> Board {
+        var newBoard = board
         newBoard.board[boxIndex].cells[cellIndex].value = newValue
         return newBoard
     }
@@ -202,7 +202,13 @@ class SudokuBoard {
             }
         }
         func checkRows() {
-            
+            for i in 0..<3 {
+                for boxes in 0..<3 {
+                    for cellIndex in 0..<3 {
+                        
+                    }
+                }
+            }
         }
         
         func checkBoxes() {
