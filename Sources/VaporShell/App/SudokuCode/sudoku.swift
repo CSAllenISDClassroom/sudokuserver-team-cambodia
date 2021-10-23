@@ -156,8 +156,8 @@ class SudokuBoard {
         print(printBoard())
     } 
 
-    func retrieveIncorrectBoardValues(playerBoard:[[Int]], solutionBoard:[[Int]]) -> [Int] {
-        var incorrectValuesArray = [Int]()
+    func retrieveIncorrectBoardValues(playerBoard:[[Int]], solutionBoard:[[Int]]) -> Board {
+        var incorrectCellPositions = [Int]()
         for box in 0 ..< playerBoard.count {
             for cellIndex in 0 ..< playerBoard[box].count {
                 if playerBoard[box][cellIndex] != solutionBoard[box][cellIndex] {
@@ -166,6 +166,8 @@ class SudokuBoard {
             }
             
         }
+
+        var incorrectPositionsBoard = 
         return incorrectValuesArray
     }
 
@@ -193,7 +195,7 @@ class SudokuBoard {
         return []
     }
     
-    func filter(filter:String, solutionBoard: Board , playerBoard: Board) -> Board{
+    func filter(filter:String, solutionBoard: Board , playerBoard: Board) {
         var boardToBeReturned = Board()
         
         switch filter {
