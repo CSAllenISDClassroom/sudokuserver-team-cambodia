@@ -146,8 +146,8 @@ class SudokuBoard {
         }
     }
 
-    func changeValueInBoard(boxIndex: Int, cellIndex: Int, newValue: Int, board: Board) -> Board {
-        var newBoard = board
+    func changeValueInBoard(boxIndex: Int, cellIndex: Int, newValue: Int?, board: Game) -> SudokuBoard {
+        var newBoard = board.playerBoard
         newBoard.board[boxIndex].cells[cellIndex].value = newValue
         return newBoard
     }
@@ -240,6 +240,8 @@ func removeNumberFromSudokuBoard(columnIndex:Int,rowIndex: Int) {
 
 func removeNumbers(numbersToRemove:Int) {
     //removes the numbers
+
+
     for _ in  1...numbersToRemove {
         //removes a number at a random box Index and cell index
         removeNumberFromSudokuBoard(columnIndex:(Int.random(in:0..<9)), rowIndex: Int.random(in: 0..<9))
